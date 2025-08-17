@@ -55,17 +55,24 @@ main {
 }
 
 .hero-content {
-    will-change: opacity;
+    will-change: opacity, transform;
     position: relative;
     z-index: 2;
     text-align: left; /* MODIFIED: Aligns the text inside the block to the left */
     margin-left: 10%; /* MODIFIED: Adds a margin from the left edge */
     max-width: 600px; /* MODIFIED: Constrains width for better readability on wide screens */
+    transform: translateY(-5vh); /* Shift content up slightly for better visual centering */
 }
 
 .hero-content h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+}
+
+.hero-content h1 .highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .hero-content p {
