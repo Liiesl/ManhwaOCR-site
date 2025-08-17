@@ -1,0 +1,132 @@
+/* Styles specific to documentation.html */
+
+body {
+    /* Set the main body background. The doc container will have its own surface color. */
+    background-color: var(--background-color);
+}
+
+/* The main content container */
+.doc-container {
+    max-width: 900px;
+    margin: 3rem auto; /* More margin on top to clear the fixed header */
+    padding: 2rem 3rem;
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Page title */
+.doc-container h1 {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Documentation sections */
+.doc-section {
+    margin-bottom: 3rem;
+}
+
+.doc-section h2 {
+    font-size: 2.1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.doc-section h3 {
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Paragraph and list styling */
+.doc-container p, 
+.doc-container li {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.doc-container a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.doc-container a:hover {
+    text-decoration: underline;
+}
+
+ol, ul {
+    padding-left: 2rem;
+}
+
+li {
+    margin-bottom: 0.75rem;
+}
+
+/* Code block styling */
+pre {
+    background-color: var(--surface-secondary-color);
+    color: var(--text-color);
+    padding: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+pre code {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    padding: 0;
+    background: none;
+    color: inherit;
+}
+
+/* Inline code snippets */
+p > code,
+li > code,
+h3 > code {
+    background-color: var(--surface-secondary-color);
+    color: var(--primary-color);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Footer styling */
+footer {
+    background: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 2rem 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .doc-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .doc-container h1 {
+        font-size: 2.2rem;
+    }
+
+    .doc-section h2 {
+        font-size: 1.8rem;
+    }
+}

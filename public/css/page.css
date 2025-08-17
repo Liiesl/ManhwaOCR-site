@@ -1,0 +1,80 @@
+/* Generic styles for static pages like About and Releases */
+
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 8rem 20px 4rem; /* 8rem top padding to clear the fixed header */
+}
+
+.page-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    transition: border-color 0.3s ease;
+}
+
+.page-container h2 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* Styles specific to releases.html */
+.release-version {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    transition: border-color 0.3s ease;
+}
+
+.release-version:last-of-type {
+    border-bottom: none;
+}
+
+.release-version h2 {
+    margin-top: 0;
+}
+
+.release-version time {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.changelog {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.changelog li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.5;
+}
+
+.changelog .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.tag.new { background-color: #28a745; } /* Green */
+.tag.improved { background-color: #17a2b8; } /* Teal */
+.tag.fixed { background-color: #dc3545; } /* Red */
