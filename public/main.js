@@ -13,7 +13,7 @@ console.log("Main application script loaded.");
  * --- CONFIGURATION ---
  * Set the direct download link to your latest release asset.
  */
-const latestReleaseUrl = 'https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/releases/latest/download/YourApp-Installer.exe';
+const latestReleaseUrl = 'https://github.com/Liiesl/ManhwaOCR/';
 
 /**
  * --- POLISHED TRANSITION CONSTANTS ---
