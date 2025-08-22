@@ -11,7 +11,7 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    height: 95vh;
+    height: 97vh;
     width: 100%;
     
     background-color: var(--background-color);
@@ -29,16 +29,13 @@ main {
     position: absolute;
     z-index: 1; /* Below content (2) and overlay (3) */
     width: 480px; /* CHANGED: Removed clamp() for a fixed size */
+    bottom: 0;
     pointer-events: none; /* Make them non-interactive */
     transition: opacity 0.3s ease, right 0.3s ease, display 0.3s ease; /* Added transitions for smoothness */
 }
 
-.bg-svg-left {
-    bottom: -2%;
-}
 
 .bg-svg-right {
-    bottom: -5%;
     right: -5%;
     width: 600px; /* MODIFIED: Increased the width to make it bigger */
 }
@@ -58,17 +55,24 @@ main {
 }
 
 .hero-content {
-    will-change: opacity;
+    will-change: opacity, transform;
     position: relative;
     z-index: 2;
     text-align: left; /* MODIFIED: Aligns the text inside the block to the left */
     margin-left: 10%; /* MODIFIED: Adds a margin from the left edge */
     max-width: 600px; /* MODIFIED: Constrains width for better readability on wide screens */
+    transform: translateY(-5vh); /* Shift content up slightly for better visual centering */
 }
 
 .hero-content h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+}
+
+.hero-content h1 .highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .hero-content p {
@@ -109,17 +113,15 @@ main {
 }
 
 .content-panel {
-    margin-top: 95vh;
+    margin-top: 93vh;
     position: relative;
     z-index: 10;
-    
     background-color: var(--surface-color);
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 12px 12px 0 0;
     box-shadow: 0 -10px 40px var(--shadow-color);
-    padding-top: 1px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     will-change: max-width, border-radius;
 }

@@ -36,7 +36,7 @@ export default class Menu {
                     <a href="about.html">About</a>
                     <a href="releases.html">Releases</a>
                     <a href="documentation.html">Documentation</a>
-                    <a href="https://github.com/your-repo/your-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://github.com/Liiesl/ManhwaOCR" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <a href="#download" class="button js-download-trigger">Download Now</a>
                 </nav>
             </div>

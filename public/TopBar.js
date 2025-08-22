@@ -26,12 +26,12 @@ export default class TopBar {
         this.element.innerHTML = `
             <nav>
                 <!-- Left: Logo -->
-                <div class="logo">Your App</div>
+                <div class="logo">My App</div>
 
                 <!-- Center: Main navigation links (hidden on mobile) -->
                 <div class="desktop-nav-center">
                     <a href="releases.html" class="nav-link">Releases</a>
-                    <a href="documentation.html" class="nav-link">Docs</a>
+                    <a href="https://manhwaocr-docs.pages.dev/" class="nav-link">Docs</a>
                     <a href="about.html" class="nav-link">About</a>
                 </div>
 
@@ -41,7 +41,7 @@ export default class TopBar {
                         <span class="icon-sun">☀️</span>
                         <span class="icon-moon">🌙</span>
                     </button>
-                    <a href="#" class="nav-link js-download-trigger">Download</a>
+                    <a href="https://github.com/Liiesl/ManhwaOCR" class="nav-link js-download-trigger">Download</a>
                     <button id="burger-menu-toggle" class="burger-toggle" title="Open menu">
                         <span></span>
                         <span></span>
