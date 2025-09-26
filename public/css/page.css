@@ -78,3 +78,14 @@
 .tag.new { background-color: #28a745; } /* Green */
 .tag.improved { background-color: #17a2b8; } /* Teal */
 .tag.fixed { background-color: #dc3545; } /* Red */
+
+footer {
+    background: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 2rem 0;
+    position: relative;
+    z-index: 10;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 7rem;
+}

@@ -13,7 +13,7 @@ console.log("Main application script loaded.");
  * --- CONFIGURATION ---
  * Set the direct download link to your latest release asset.
  */
-const latestReleaseUrl = 'https://github.com/Liiesl/ManhwaOCR/';
+const latestReleaseUrl = 'https://github.com/Liiesl/EasyScanlate/releases/latest/download/EasyScanlate-Installer.exe';
 
 /**
  * --- POLISHED TRANSITION CONSTANTS ---
