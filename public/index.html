@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ManhwaOCR is a free desktop app that makes translating manhwa and webtoons effortless. Experience seamless OCR, translation, and workflow tools. Download for free.">
-    <title>My Awesome Desktop App</title>
+    <meta name="description" content="Easy Scanlate is a free desktop app that makes translating manhwa and webtoons effortless. Auto translate your manhwa with ease. Let ai do the heavy lifting so you can focus on scanlations quality. Designed with simplicity at its core.">
+    <title>Easy Scanlate</title>
     <!-- Link to refactored CSS files -->
     <link rel="stylesheet" href="css/root.css">
     <link rel="stylesheet" href="css/topbar.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/page.css"> <!-- Added for consistency -->
-
 
     <script type="module" src="main.js"></script>
         <script>
@@ -52,73 +50,91 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1>Translate Manhwa <span class="highlight">Easily</span></h1>
-                <p>Experience seamless productivity and effortless workflow with our new desktop application.</p>
+                <p>Auto translate your manhwa with ease. Let ai do the heavy lifting so you can focus on scanlations quality. Designed with simplicity at its core.</p>
                 <div class="hero-actions">
-                    <a href="#features" class="see-features-link">See Features</a>
+                    <!-- CHANGED: Link now points to #workflow -->
+                    <a href="#workflow" class="see-features-link">See The Workflow</a>
                     <div class="button-group">
-                        <a href="#" class="button js-download-trigger">Download for Free</a>
-                        <a href="https://github.com/Liiesl/ManhwaOCR" class="github-button"><img src="assets/github-mark-white.svg" alt="GitHub"></a>
+                        <a href="https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe" class="button js-download-trigger">Download for Free</a>
+                        <a href="https://github.com/Liiesl/EasyScanlate/" class="github-button"><img src="assets/github-mark-white.svg" alt="GitHub"></a>
                     </div>
                 </div>
             </div>
         </section>
 
         <div class="content-panel">
-            <section id="features" class="features">
-                <h2>Features</h2>
-                <div class="feature-grid">
+            <section id="workflow" class="features">
+                <h2>Your New Workflow</h2>
+                <div class="feature-list">
+                    <!-- Step 1: Video Left, Text Right -->
                     <div class="feature-item">
-                        <img src="https://via.placeholder.com/100" alt="Feature Icon 1">
-                        <h3>Feature One</h3>
-                        <p>Briefly describe the first amazing feature of My application.</p>
+                        <div class="feature-media">
+                            <video autoplay loop muted playsinline src="https://github.com/user-attachments/assets/432fa7f7-9172-43b7-97c7-28e8d66b6758" alt="Video showing text detection"></video>
+                        </div>
+                        <div class="feature-text">
+                            <h3>1. Import & Detect</h3>
+                            <p>Drag and drop your raw manhwa pages. Our AI instantly detects all text bubbles, preparing them for translation.</p>
+                        </div>
                     </div>
-                    <div class="feature-item">
-                        <img src="https://via.placeholder.com/100" alt="Feature Icon 2">
-                        <h3>Feature Two</h3>
-                        <p>Explain the second incredible feature that sets My app apart.</p>
+                    <!-- Step 2: Text Left, Video Right (Reversed) -->
+                    <div class="feature-item feature-item--reverse">
+                        <div class="feature-media">
+                            <video autoplay loop muted playsinline src="https://github.com/user-attachments/assets/2b255b1e-a036-4b98-b22c-5d72854a65c3" alt="Video showing instant translation"></video>
+                        </div>
+                        <div class="feature-text">
+                            <h3>2. Auto-Translate & Clean</h3>
+                            <p>The app translates the text, removes the original script, and cleans the art behind it in a single click.</p>
+                        </div>
                     </div>
+                    <!-- Step 3: Video Left, Text Right -->
                     <div class="feature-item">
-                        <img src="https://via.placeholder.com/100" alt="Feature Icon 3">
-                        <h3>Feature Three</h3>
-                        <p>Detail the third must-have feature that My users will love.</p>
+                        <div class="feature-media">
+                           <video autoplay loop muted playsinline src="https://github.com/user-attachments/assets/a3269eb7-2849-4a44-840b-c5433d3ce8fc" alt="Video showing text style editing"></video>
+                        </div>
+                        <div class="feature-text">
+                            <h3>3. Review & Export</h3>
+                            <p>Make final edits to the translation or adjust the text style, then export your finished chapter.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section id="how-it-works" class="how-it-works">
-                <h2>How It Works</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Download</h3>
-                        <p>Get the installer from our website.</p>
+            <!-- === NEW SECTION: BEFORE & AFTER SLIDER === -->
+            <section id="comparison" class="comparison">
+                <h2>See the Magic Happen</h2>
+                <p class="comparison-subtitle">Slide the handle to see the instant transformation from raw to translated.</p>
+                <div class="comparison-slider">
+                    <div class="comparison-image before-image">
+                        <!-- IMPORTANT: Replace with your 'before' image -->
+                        <img src="https://placehold.co/1000x600/1a1a1a/FFF?text=Raw+Manhwa+Panel" alt="Raw manhwa panel before translation">
                     </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Install</h3>
-                        <p>Run the installer and follow the simple on-screen instructions.</p>
+                    <div class="comparison-image after-image">
+                        <!-- IMPORTANT: Replace with your 'after' image -->
+                        <img src="https://placehold.co/1000x600/007bff/FFF?text=Translated+Panel" alt="Manhwa panel after translation by Easy Scanlate">
                     </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Enjoy</h3>
-                        <p>Launch the app and start being more productive.</p>
+                    <div class="comparison-handle">
+                        <div class="comparison-arrow comparison-arrow-left"></div>
+                        <div class="comparison-arrow comparison-arrow-right"></div>
                     </div>
                 </div>
             </section>
 
-            <section id="testimonials" class="testimonials">
-                <h2>What Our Users Say</h2>
-                <div class="testimonial">
-                    <blockquote>
-                        "This app has completely changed the way I work. It's so intuitive and powerful!"
-                    </blockquote>
-                    <cite>- A Happy User</cite>
-                </div>
-                <div class="testimonial">
-                    <blockquote>
-                        "I can't imagine my workflow without this app now. Highly recommended!"
-                    </blockquote>
-                    <cite>- Another Satisfied Customer</cite>
+            <!-- === NEW SECTION: WHO IS THIS FOR? === -->
+            <section id="who-is-it-for" class="who-is-it-for">
+                <h2>Built for Speed and Quality</h2>
+                <div class="user-profiles">
+                    <div class="profile-card">
+                        <h3>For Scanlation Groups</h3>
+                        <p>Accelerate your releases. Let AI handle the tedious work of initial translation, cleaning, and typesetting so your team can focus on polishing the final product.</p>
+                    </div>
+                    <div class="profile-card">
+                        <h3>For Solo Translators</h3>
+                        <p>Tackle an entire series by yourself. Our app automates 90% of the manual work, turning a team-sized project into a manageable solo hobby.</p>
+                    </div>
+                    <div class="profile-card">
+                        <h3>For Avid Readers</h3>
+                        <p>Can't wait for the official translation? Get instant, high-quality translations of any series for your own personal reading and enjoyment.</p>
+                    </div>
                 </div>
             </section>
 
@@ -131,7 +147,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 My Company Name. All rights reserved.</p>
+        <p>&copy; 2025 Liiesl. All rights reserved.</p>
     </footer>
 
     <!-- The script tag now points to main.js and is a module to allow for imports -->

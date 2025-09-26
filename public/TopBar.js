@@ -26,7 +26,7 @@ export default class TopBar {
         this.element.innerHTML = `
             <nav>
                 <!-- Left: Logo -->
-                <div class="logo">My App</div>
+                <div class="logo"><a href="/">EasyScanlate</a></div>
 
                 <!-- Center: Main navigation links (hidden on mobile) -->
                 <div class="desktop-nav-center">
@@ -41,7 +41,7 @@ export default class TopBar {
                         <span class="icon-sun">☀️</span>
                         <span class="icon-moon">🌙</span>
                     </button>
-                    <a href="https://github.com/Liiesl/ManhwaOCR" class="nav-link js-download-trigger">Download</a>
+                    <a href="https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe" class="nav-link js-download-trigger">Download</a>
                     <button id="burger-menu-toggle" class="burger-toggle" title="Open menu">
                         <span></span>
                         <span></span>

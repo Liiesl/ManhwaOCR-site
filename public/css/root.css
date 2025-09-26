@@ -19,7 +19,7 @@
     /* Dark Theme Overrides */
     --primary-color: #B07178;
     --primary-color-hover: #996067;
-    --secondary-color: #948979;
+    --secondary-color: #b5a996;
     --background-color: #222831;
     --surface-color: #393E46;
     --surface-secondary-color: #2c2c2e;
@@ -68,4 +68,9 @@ body {
 
 .button:hover {
     background-color: var(--primary-color-hover);
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none; /* no underline */
 }

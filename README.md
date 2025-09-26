@@ -1,1 +1,1 @@
-site for [ManhwaOCR](https://github.com/Liiesl/ManhwaOCR)
+site for [EasyScanlate](https://github.com/Liiesl/EasyScanlate)
