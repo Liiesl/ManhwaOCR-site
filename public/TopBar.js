@@ -31,7 +31,7 @@ export default class TopBar {
                 <!-- Center: Main navigation links (hidden on mobile) -->
                 <div class="desktop-nav-center">
                     <a href="releases.html" class="nav-link">Releases</a>
-                    <a href="https://manhwaocr-docs.pages.dev/" class="nav-link">Docs</a>
+                    <a href="https://docs.easyscanlate.site/" class="nav-link">Docs</a>
                     <a href="about.html" class="nav-link">About</a>
                 </div>
 
