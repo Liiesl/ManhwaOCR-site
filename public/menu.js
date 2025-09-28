@@ -35,8 +35,8 @@ export default class Menu {
                     <a href="index.html#testimonials">Testimonials</a>
                     <a href="about.html">About</a>
                     <a href="releases.html">Releases</a>
-                    <a href="documentation.html">Documentation</a>
-                    <a href="https://github.com/Liiesl/ManhwaOCR" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://docs.easyscanlate.site">Documentation</a>
+                    <a href="https://github.com/Liiesl/EasyScanlate" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <a href="#download" class="button js-download-trigger">Download Now</a>
                 </nav>
             </div>
