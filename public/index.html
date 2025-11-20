@@ -55,7 +55,7 @@
                     <!-- CHANGED: Link now points to #workflow -->
                     <a href="#workflow" class="see-features-link">See The Workflow</a>
                     <div class="button-group">
-                        <a href="https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe" class="button js-download-trigger">Download for Free</a>
+                        <a href="#" class="button js-download-trigger">Download for Free</a>
                         <a href="https://github.com/Liiesl/EasyScanlate/" class="github-button"><img src="assets/github-mark-white.svg" alt="GitHub"></a>
                     </div>
                 </div>
@@ -149,6 +149,20 @@
     <footer>
         <p>&copy; 2025 Liiesl. All rights reserved.</p>
     </footer>
+    
+    <!-- MODAL FOR NON-WINDOWS USERS -->
+    <div id="non-windows-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <h3>Windows Only</h3>
+            <p>Easy Scanlate currently provides a direct installer for Windows only.</p>
+            <p>For other operating systems, you can build it from the source code. Please see our documentation or GitHub repository for instructions.</p>
+            <div class="modal-actions">
+                <a href="https://github.com/Liiesl/EasyScanlate/" class="button button-secondary" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                <a href="https://docs.easyscanlate.site/getting-started/installation/#2-from-source-code-alternative-method" class="button" target="_blank" rel="noopener noreferrer">View Docs</a>
+            </div>
+        </div>
+    </div>
 
     <!-- The script tag now points to main.js and is a module to allow for imports -->
     <script type="module" src="main.js"></script>

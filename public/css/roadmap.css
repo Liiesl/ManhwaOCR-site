@@ -1,0 +1,147 @@
+/* Styles for the Kanban board on roadmap.html */
+
+#kanban {
+    margin-top: 3rem;
+}
+
+.kanban-board {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.kanban-column {
+    flex: 1;
+    background-color: var(--surface-secondary-color);
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 250px;
+    transition: background-color 0.3s ease;
+}
+
+.kanban-column h3 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.kanban-card {
+    background-color: var(--surface-color);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kanban-card p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Reusing tag styles from page.css for consistency */
+.kanban-card .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    color: #fff;
+    margin-bottom: 0.5rem; /* Space between tag and text */
+    text-transform: capitalize;
+}
+
+.tag.new { background-color: #28a745; }
+.tag.improved { background-color: #17a2b8; }
+.tag.fixed { background-color: #dc3545; }
+
+/* NEW: Styles for nested sub-task lists */
+.subtask-list {
+    list-style-type: circle;
+    padding-left: 20px;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+.subtask-list li {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+}
+
+.loading-message,
+.empty-message,
+.error-message {
+    font-style: italic;
+    color: var(--secondary-color);
+    padding: 1rem;
+    text-align: center;
+}
+
+.error-message {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+
+/* Styles for the future release plans */
+#future-releases {
+    margin-top: 4rem;
+}
+
+/* NEW: Container for each release phase (e.g., "Beta Phase") */
+.release-phase {
+    margin-bottom: 3rem;
+}
+
+/* NEW: Styling for the main phase heading (<h3>) */
+.release-phase > h3 {
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* NEW: Styling for the phase description paragraph */
+.release-phase > p {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+.release-plan {
+    margin-bottom: 2rem;
+    background-color: var(--surface-secondary-color);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    border-left: 4px solid var(--accent-color, #007bff); /* Adds a nice accent color */
+}
+
+/* MODIFIED: Changed h3 to h4 to match the new HTML structure */
+.release-plan h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.release-plan ul {
+    padding-left: 20px;
+}
+
+.release-plan li {
+    margin-bottom: 0.5rem;
+}
+
+
+
+/* Responsive styles for the roadmap page */
+@media (max-width: 900px) {
+    .kanban-board {
+        flex-direction: column;
+    }
+}
