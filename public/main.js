@@ -179,19 +179,52 @@ if (heroSection) {
 }
 
 
-// --- DOWNLOAD AND REDIRECT LOGIC ---
+// --- OS-AWARE DOWNLOAD LOGIC & MODAL ---
+const nonWindowsModal = document.querySelector('#non-windows-modal');
+if (nonWindowsModal) {
+    const closeModalBtn = nonWindowsModal.querySelector('.modal-close-btn');
+
+    const openModal = () => {
+        nonWindowsModal.classList.add('is-visible');
+    };
+
+    const closeModal = () => {
+        nonWindowsModal.classList.remove('is-visible');
+    };
+
+    closeModalBtn.addEventListener('click', closeModal);
+    nonWindowsModal.addEventListener('click', (e) => {
+        if (e.target === nonWindowsModal) {
+            closeModal();
+        }
+    });
+}
+
+
 document.querySelectorAll('.js-download-trigger').forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault();
-        console.log('Download starting...');
-        window.location.href = latestReleaseUrl;
 
-        // Wait a few seconds to ensure the download has started, then redirect to the homepage.
-        setTimeout(() => {
-            window.location.href = '/'; // Redirect to the homepage
-        }, 3000);
+        // Check if the user is on Windows.
+        const isWindows = navigator.userAgent.toLowerCase().includes('win');
+
+        if (isWindows) {
+            console.log('Windows OS detected. Starting download...');
+            window.location.href = latestReleaseUrl;
+
+            // Wait a few seconds to ensure the download has started, then redirect to the homepage.
+            setTimeout(() => {
+                window.location.href = '/'; // Redirect to the homepage
+            }, 3000);
+        } else {
+            console.log('Non-Windows OS detected. Opening modal.');
+            if (nonWindowsModal) {
+                nonWindowsModal.classList.add('is-visible');
+            }
+        }
     });
 });
+
 
 // --- SMOOTH SCROLLING LOGIC ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

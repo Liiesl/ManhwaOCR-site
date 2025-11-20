@@ -3,7 +3,8 @@
 .page-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 8rem 20px 4rem; /* 8rem top padding to clear the fixed header */
+    padding: 8rem 20px 4rem;
+    /* 8rem top padding to clear the fixed header */
 }
 
 .page-container h1 {
@@ -75,9 +76,36 @@
     margin-top: 2px;
 }
 
-.tag.new { background-color: #28a745; } /* Green */
-.tag.improved { background-color: #17a2b8; } /* Teal */
-.tag.fixed { background-color: #dc3545; } /* Red */
+.tag.new {
+    background-color: #28a745;
+}
+
+/* Green */
+.tag.improved {
+    background-color: #17a2b8;
+}
+
+/* Teal */
+.tag.fixed {
+    background-color: #dc3545;
+}
+
+/* Red */
+
+.release-warning {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 4px solid #dc3545;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+}
+
+.release-warning strong {
+    color: #dc3545;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.1em;
+}
 
 footer {
     background: var(--footer-bg-color);
