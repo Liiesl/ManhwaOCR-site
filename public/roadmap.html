@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,34 +13,38 @@
     <link rel="stylesheet" href="css/roadmap.css">
 
     <script>
-      (function() {
-        // Function to set the theme
-        function setTheme(theme) {
-          document.documentElement.setAttribute('data-theme', theme);
-          localStorage.setItem('theme', theme);
-        }
+        (function () {
+            // Function to set the theme
+            function setTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            }
 
-        // Check for a saved theme in localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-          document.documentElement.setAttribute('data-theme', savedTheme);
-          return;
-        }
+            // Check for a saved theme in localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+                return;
+            }
 
-        // If no saved theme, check the OS/browser preference
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+            // If no saved theme, check the OS/browser preference
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
 
-      })();
+        })();
     </script>
 </head>
+
 <body>
 
     <header id="main-header"></header>
 
     <main class="page-container">
         <h1>Roadmap</h1>
-        <p>This roadmap is generated directly from the <a href="https://github.com/Liiesl/EasyScanlate/blob/main/todo.md" target="_blank" rel="noopener noreferrer"><code>todo.md</code></a> file in our GitHub repository, giving you a real-time look at our progress.</p>
+        <p>This roadmap is generated directly from the <a
+                href="https://github.com/Liiesl/EasyScanlate/blob/main/todo.md" target="_blank"
+                rel="noopener noreferrer"><code>todo.md</code></a> file in our GitHub repository, giving you a real-time
+            look at our progress.</p>
 
         <section id="kanban">
             <h2>Current Development</h2>
@@ -65,7 +70,7 @@
                 <!-- Column 3: Done -->
                 <div class="kanban-column">
                     <h3>Done (Waiting for Release)</h3>
-                     <div class="column-content" id="col-done">
+                    <div class="column-content" id="col-done">
                         <!-- Content will be dynamically inserted here -->
                         <p class="loading-message">Loading tasks from GitHub...</p>
                     </div>
@@ -78,7 +83,8 @@
 
             <div class="release-phase">
                 <h3>Beta Phase</h3>
-                <p>This phase focuses on implementing core features, refining workflows, and improving stability based on user feedback.</p>
+                <p>This phase focuses on implementing core features, refining workflows, and improving stability based
+                    on user feedback.</p>
 
                 <div class="release-plan">
                     <h4>Version 0.2.0 - Core Functionality & Performance</h4>
@@ -100,7 +106,8 @@
 
             <div class="release-phase">
                 <h3>Public Stable Release</h3>
-                <p>This marks the first official, stable version of the application, ready for a wider audience and general use.</p>
+                <p>This marks the first official, stable version of the application, ready for a wider audience and
+                    general use.</p>
 
                 <div class="release-plan">
                     <h4>Version 1.0.0 - Official Launch</h4>
@@ -119,6 +126,7 @@
     </footer>
 
     <script type="module" src="main.js"></script>
-    <script src="js/roadmap.js"></script>
+    <script src="/roadmap.js"></script>
 </body>
+
 </html>
