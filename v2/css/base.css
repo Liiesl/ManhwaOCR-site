@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    background-image: radial-gradient(circle at center, var(--color-bg-glow) 0%, transparent 60%);
+    background-attachment: fixed;
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Background Effects */
+.background-gradient {
+    display: none;
+}
+
+/* Vector Background */
+.vector-background {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    max-width: 1200px;
+    height: auto;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.vector-background svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+.vector-path {
+    /* 
+       Animation Logic:
+       1. pathLength="1" in HTML makes the total length of every curve equal to 1.
+       2. stroke-dasharray: 1 creates a dash that is exactly the length of the curve.
+       3. stroke-dashoffset controls the visibility. 
+          1 = Fully hidden (pushed back).
+          0 = Fully visible (drawn).
+    */
+    stroke-dasharray: 1;
+    stroke-dashoffset: var(--draw-progress, 1);
+
+    /* We removed the custom stroke styling here to let the SVG's own stroke-width attributes work */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.9;
+
+    /* Use a linear transition for immediate response to scroll */
+    transition: stroke-dashoffset 0.05s linear;
+
+    /* Ensures they start hidden if JS takes a moment to load */
+    fill: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vector-background {
+        width: 90%;
+    }
+}

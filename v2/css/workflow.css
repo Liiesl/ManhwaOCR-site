@@ -1,0 +1,157 @@
+/* Workflow Section */
+.workflow {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.workflow-section {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.workflow-layout {
+    display: flex;
+    gap: 4rem;
+    position: relative;
+}
+
+.workflow-visual {
+    flex: 1;
+    position: sticky;
+    top: 20vh;
+    height: fit-content;
+    align-self: flex-start;
+}
+
+.video-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    aspect-ratio: 16/9;
+}
+
+.video-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.step-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.step-video.active {
+    opacity: 1;
+}
+
+.workflow-steps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30vh;
+    /* Space out steps to allow scrolling */
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.step-item {
+    display: flex;
+    gap: 2rem;
+    opacity: 0.3;
+    transition: opacity 0.5s ease;
+    /* min-height: 30vh; */
+}
+
+.step-item.active {
+    opacity: 1;
+}
+
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 3rem;
+}
+
+.step-num {
+    font-family: var(--font-main);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: rgba(176, 113, 120, 0.1);
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(176, 113, 120, 0.2);
+}
+
+.step-line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-border);
+    opacity: 0.3;
+    min-height: 100px;
+}
+
+.step-item:last-child .step-line {
+    display: none;
+}
+
+.step-text {
+    padding-top: 0.5rem;
+}
+
+.step-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.step-text p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+    .workflow-layout {
+        flex-direction: column;
+    }
+
+    .workflow-visual {
+        position: relative;
+        top: 0;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .workflow-steps {
+        gap: 4rem;
+        padding: 0;
+    }
+
+    .step-item {
+        min-height: auto;
+        opacity: 1;
+        /* Always visible on mobile */
+    }
+
+    .step-line {
+        display: none;
+    }
+}
