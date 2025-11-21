@@ -25,10 +25,6 @@
     <div class="vector-background">
         <svg width="1040" height="704" viewBox="0 0 1040 704" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_424_92)">
-                <!-- 
-                    ADDED: class="vector-path" for CSS targeting
-                    ADDED: pathLength="1" for simplified animation math
-                -->
                 <path class="vector-path" pathLength="1"
                     d="M462 708.5C462 708.5 501.5 596 625.998 497C814.115 347.41 1039.99 347.001 1039.99 347.001"
                     stroke="#B07178" stroke-width="28" />
@@ -151,22 +147,57 @@
                 </div>
 
                 <div class="comparison-wrapper">
-                    <div class="comparison-slider" id="comparison-slider">
-                        <div class="comparison-image before-image">
-                            <img src="https://placehold.co/1000x600/1a1a1a/FFF?text=Raw+Manhwa+Panel" alt="Raw">
-                            <span class="label">Raw</span>
+                    <div class="comparison-layout">
+                        <!-- Text List (Left) -->
+                        <div class="comparison-previews">
+                            <div class="preview-item active"
+                                data-before="https://placehold.co/600x800/1a1a1a/FFF?text=Raw+Action"
+                                data-after="https://placehold.co/600x800/007bff/FFF?text=Translated+Action">
+                                <h3>Action Scenes</h3>
+                                <p>Clean redraws even over complex sound effects and motion lines.</p>
+                            </div>
+                            <div class="preview-item"
+                                data-before="https://placehold.co/600x800/2a2a2a/FFF?text=Raw+Dialogue"
+                                data-after="https://placehold.co/600x800/28a745/FFF?text=Translated+Dialogue">
+                                <h3>Context Aware</h3>
+                                <p>Translation engine that understands who is speaking to whom.</p>
+                            </div>
+                            <div class="preview-item" data-before="https://placehold.co/600x800/3a3a3a/FFF?text=Raw+SFX"
+                                data-after="https://placehold.co/600x800/dc3545/FFF?text=Translated+SFX">
+                                <h3>Smart Typography</h3>
+                                <p>Automatic font matching to keep the original vibe of the series.</p>
+                            </div>
+                            <div class="preview-item"
+                                data-before="https://placehold.co/600x800/4a4a4a/FFF?text=Raw+Complex"
+                                data-after="https://placehold.co/600x800/ffc107/FFF?text=Translated+Complex">
+                                <h3>Complex Layouts</h3>
+                                <p>Handles vertical text, bubbles over borders, and translucent bubbles.</p>
+                            </div>
                         </div>
-                        <div class="comparison-image after-image">
-                            <img src="https://placehold.co/1000x600/007bff/FFF?text=Translated+Panel" alt="Translated">
-                            <span class="label">Translated</span>
-                        </div>
-                        <div class="comparison-handle">
-                            <div class="handle-line"></div>
-                            <div class="handle-circle">
-                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
-                                    fill="none">
-                                    <path d="M21 12H3m18 0l-4-4m4 4l-4 4M3 12l4-4m-4 4l4 4" />
-                                </svg>
+
+                        <!-- Visual Slider (Right) -->
+                        <div class="comparison-main">
+                            <div class="comparison-slider" id="comparison-slider">
+                                <div class="comparison-image before-image">
+                                    <img id="comp-before" src="https://placehold.co/600x800/1a1a1a/FFF?text=Raw+Action"
+                                        alt="Raw">
+                                    <span class="label">Raw</span>
+                                </div>
+                                <div class="comparison-image after-image">
+                                    <img id="comp-after"
+                                        src="https://placehold.co/600x800/007bff/FFF?text=Translated+Action"
+                                        alt="Translated">
+                                    <span class="label">Translated</span>
+                                </div>
+                                <div class="comparison-handle">
+                                    <div class="handle-line"></div>
+                                    <div class="handle-circle">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor"
+                                            stroke-width="2" fill="none">
+                                            <path d="M21 12H3m18 0l-4-4m4 4l-4 4M3 12l4-4m-4 4l4 4" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

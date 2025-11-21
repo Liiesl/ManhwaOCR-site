@@ -48,6 +48,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Comparison Preview Switching
+    const previewItems = document.querySelectorAll('.preview-item');
+    const compBefore = document.getElementById('comp-before');
+    const compAfter = document.getElementById('comp-after');
+
+    if (previewItems.length > 0 && compBefore && compAfter) {
+        previewItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Update active state
+                previewItems.forEach(p => p.classList.remove('active'));
+                item.classList.add('active');
+
+                // Update images
+                const beforeSrc = item.getAttribute('data-before');
+                const afterSrc = item.getAttribute('data-after');
+
+                if (beforeSrc) compBefore.src = beforeSrc;
+                if (afterSrc) compAfter.src = afterSrc;
+            });
+        });
+    }
+
     // Modal Logic for Non-Windows Users
     const modal = document.getElementById('non-windows-modal');
     const closeBtn = document.querySelector('.modal-close-btn');
