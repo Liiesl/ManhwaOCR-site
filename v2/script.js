@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Comparison Slider Logic
     const slider = document.getElementById('comparison-slider');
@@ -19,10 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateSlider = (x) => {
             const rect = slider.getBoundingClientRect();
             let position = ((x - rect.left) / rect.width) * 100;
-
-            // Clamp between 0 and 100
             position = Math.max(0, Math.min(100, position));
-
             afterImage.style.width = `${position}%`;
             handle.style.left = `${position}%`;
         };
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updateSlider(e.clientX);
         });
 
-        // Touch support
         slider.addEventListener('touchstart', () => isDragging = true);
         window.addEventListener('touchend', () => isDragging = false);
         window.addEventListener('touchmove', (e) => {
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updateSlider(e.touches[0].clientX);
         });
 
-        // Click to jump
         slider.addEventListener('click', (e) => {
             updateSlider(e.clientX);
         });
@@ -56,61 +53,76 @@ document.addEventListener('DOMContentLoaded', () => {
     if (previewItems.length > 0 && compBefore && compAfter) {
         previewItems.forEach(item => {
             item.addEventListener('click', () => {
-                // Update active state
                 previewItems.forEach(p => p.classList.remove('active'));
                 item.classList.add('active');
-
-                // Update images
                 const beforeSrc = item.getAttribute('data-before');
                 const afterSrc = item.getAttribute('data-after');
-
                 if (beforeSrc) compBefore.src = beforeSrc;
                 if (afterSrc) compAfter.src = afterSrc;
             });
         });
     }
 
-    // Modal Logic for Non-Windows Users
+    // --- MODAL LOGIC (Fixing the "Not Appearing" issue) ---
     const modal = document.getElementById('non-windows-modal');
     const closeBtn = document.querySelector('.modal-close-btn');
     const downloadBtns = document.querySelectorAll('.js-download-trigger');
 
-    // Simple OS detection
-    const isWindows = navigator.platform.indexOf('Win') > -1;
+    // Better detection: Check userAgent string instead of platform
+    const isWindows = navigator.userAgent.includes('Windows');
 
-    downloadBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            if (!isWindows) {
-                e.preventDefault();
-                modal.classList.add('active');
-            } else {
-                if (btn.getAttribute('href') === '#') {
-                    e.preventDefault();
-                    // alert('Download started! (Prototype)');
+    if (modal && downloadBtns.length > 0) {
+        downloadBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Debugging: Check console to ensure click is registered
+                console.log('Download clicked. Windows detected:', isWindows);
+
+                if (!isWindows) {
+                    e.preventDefault(); // Stop the link from jumping
+                    e.stopPropagation(); // Stop other listeners (like smooth scroll) from interfering
+                    modal.classList.add('active');
+                } else {
+                    // If it is windows, but link is '#', prevent jump
+                    if (btn.getAttribute('href') === '#') {
+                        e.preventDefault();
+                    }
                 }
+            });
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
             }
         });
-    });
+    }
 
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
-
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-
-    // Smooth Scroll for Anchor Links
+    // --- SMOOTH SCROLL (Fixed the SyntaxError Crash) ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+
+            // CRITICAL FIX: 
+            // If href is exactly "#", it is not a valid ID selector.
+            // We MUST return here to prevent the crash that was stopping your modal.
+            if (href === '#' || href === '') return;
+
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            } catch (err) {
+                console.warn('Smooth scroll failed for:', href);
             }
         });
     });
@@ -122,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (stepItems.length > 0 && stepVideos.length > 0) {
         const observerOptions = {
             root: null,
-            rootMargin: '-40% 0px -40% 0px', // Trigger when element is in the middle 20% of viewport
+            rootMargin: '-40% 0px -40% 0px',
             threshold: 0
         };
 
@@ -130,8 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const step = entry.target.getAttribute('data-step');
-
-                    // Activate corresponding video
                     stepVideos.forEach(video => {
                         if (video.id === `video-step-${step}`) {
                             video.classList.add('active');
@@ -139,8 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             video.classList.remove('active');
                         }
                     });
-
-                    // Highlight active step
                     stepItems.forEach(item => item.classList.remove('active'));
                     entry.target.classList.add('active');
                 }
@@ -150,23 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
         stepItems.forEach(item => observer.observe(item));
     }
 
-    // Vector Background Animation (Stroke Dash Offset)
+    // Vector Background Animation
     const vectorBg = document.querySelector('.vector-background');
-
     if (vectorBg) {
         window.addEventListener('scroll', () => {
             requestAnimationFrame(() => {
                 const scrollY = window.scrollY;
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-                // Normalize scroll to 0 - 1
                 const scrollPercent = Math.min(1, Math.max(0, scrollY / docHeight));
-
-                // Calculate Offset:
-                // Start (Top): Offset = 1 (Line Hidden)
-                // End (Bottom): Offset = 0 (Line Fully Drawn)
                 const drawOffset = 1 - scrollPercent;
-
                 vectorBg.style.setProperty('--draw-progress', drawOffset);
             });
         });
@@ -178,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconSun = document.querySelector('.icon-sun');
     const iconMoon = document.querySelector('.icon-moon');
 
-    // Check for saved theme preference or system preference
     const savedTheme = localStorage.getItem('theme');
     const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 
@@ -188,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         htmlElement.setAttribute('data-theme', 'light');
     }
 
-    // Update icons based on current theme
     const updateThemeIcons = () => {
         const currentTheme = htmlElement.getAttribute('data-theme');
         if (currentTheme === 'light') {
@@ -200,14 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initial icon update
     updateThemeIcons();
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const currentTheme = htmlElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
             htmlElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcons();
@@ -232,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileMenuClose) mobileMenuClose.addEventListener('click', toggleMenu);
         mobileMenuOverlay.addEventListener('click', toggleMenu);
 
-        // Close menu when clicking a link
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', toggleMenu);
