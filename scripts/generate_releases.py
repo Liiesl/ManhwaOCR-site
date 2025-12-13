@@ -129,8 +129,10 @@ def generate_html(releases):
     return '\n'.join(html_parts)
 
 def update_file(html_content):
-    # Adjust path to be relative to where script is run or absolute
-    # Assuming script is run from project root
+    """
+    Adjust path to be relative to where script is run or absolute
+    Assuming script is run from project root
+    """
     file_path = os.path.join('v2', 'releases.html')
     
     if not os.path.exists(file_path):
