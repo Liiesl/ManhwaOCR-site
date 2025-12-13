@@ -1,0 +1,133 @@
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    font-family: var(--font-main);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 30px var(--color-primary-glow);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(176, 113, 120, 0.1);
+    border: 1px solid rgba(176, 113, 120, 0.2);
+    border-radius: var(--radius-full);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Glass Card */
+.glass-card {
+    background: var(--color-surface-glass);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transition: transform 0.5s ease;
+}
+
+.glass-card:hover {
+    transform: perspective(1000px) rotateY(0) rotateX(0);
+}
+
+.glow-effect {
+    display: none;
+}
+
+/* Icon Box */
+.icon-box {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-glass {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-glass {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}

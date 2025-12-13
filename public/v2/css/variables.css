@@ -1,0 +1,36 @@
+:root {
+    --font-main: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    --color-bg: #222831;
+    --color-surface: #222831;
+    --color-surface-glass: rgba(34, 40, 49, 0.95);
+    --color-primary: #B07178;
+    --color-primary-glow: transparent;
+    --color-secondary: #DFD0B8;
+    --color-text: #ffffff;
+    --color-text-muted: #DFD0B8;
+    --color-bg-glow: rgba(190, 111, 197, 0.09);
+    --color-border: rgba(181, 169, 150, 0.3);
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    --shadow-glow: none;
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+    --color-bg: #F9FAFB;
+    --color-surface: #FFFFFF;
+    --color-surface-glass: rgba(255, 255, 255, 0.9);
+    --color-text: #1F2937;
+    --color-text-muted: #4B5563;
+    --color-border: rgba(0, 0, 0, 0.1);
+    --color-bg-glow: rgba(176, 113, 120, 0.05);
+}

@@ -1,0 +1,189 @@
+/* Workflow Section */
+.workflow {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.workflow-section {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.workflow-section .section-header {
+    position: sticky;
+    top: 100px;
+    z-index: 20;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.workflow-layout {
+    display: flex;
+    gap: 4rem;
+    position: relative;
+}
+
+.workflow-visual {
+    flex: 1;
+    position: sticky;
+    top: 33vh;
+    height: fit-content;
+    align-self: flex-start;
+    z-index: 10;
+}
+
+.video-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    aspect-ratio: 16/9;
+}
+
+.video-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.step-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.step-video.active {
+    opacity: 1;
+}
+
+.workflow-steps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* Removed large gap, spacing is now handled by step-item height for the sticky effect */
+    gap: 0;
+    padding-top: 0;
+    padding-bottom: 20vh;
+    /* Extra space at bottom to let the last item scroll out */
+}
+
+.step-item {
+    display: flex;
+    gap: 2rem;
+    opacity: 0.3;
+    transition: opacity 0.5s ease;
+    /* Make container tall so sticky content floats inside it until next step hits */
+    min-height: 100vh;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+.step-item.active {
+    opacity: 1;
+}
+
+/* Make the content sticky inside the tall step-item container */
+.step-indicator,
+.step-text {
+    position: sticky;
+    /* Aligns exactly with the video on the left */
+    top: 33vh;
+    height: fit-content;
+}
+
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 3rem;
+}
+
+.step-num {
+    font-family: var(--font-main);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: rgba(176, 113, 120, 0.1);
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(176, 113, 120, 0.2);
+}
+
+.step-line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-border);
+    opacity: 0.3;
+    min-height: 100px;
+}
+
+.step-item:last-child .step-line {
+    display: none;
+}
+
+.step-text {
+    padding-top: 0.5rem;
+}
+
+.step-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.step-text p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+    .workflow-layout {
+        flex-direction: column;
+    }
+
+    .workflow-visual {
+        position: relative;
+        top: 0;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .workflow-steps {
+        gap: 4rem;
+        padding: 0;
+    }
+
+    .step-item {
+        min-height: auto;
+        opacity: 1;
+        padding-top: 0;
+    }
+
+    /* Disable sticky effect on mobile for natural scrolling */
+    .step-indicator,
+    .step-text {
+        position: static;
+        top: auto;
+    }
+
+    .step-line {
+        display: none;
+    }
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Easy Scanlate is a free desktop app that makes translating manhwa and webtoons effortless. Auto translate your manhwa with ease. Let ai do the heavy lifting so you can focus on scanlations quality. Designed with simplicity at its core.">
+    <title>Easy Scanlate</title>
+    <link rel="icon" type="image/x-icon" href="assets/Frame 17.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- Decorative Vector Background -->
+    <div class="vector-background">
+        <svg width="1040" height="704" viewBox="0 0 1040 704" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_424_92)">
+                <path class="vector-path" pathLength="1"
+                    d="M462 708.5C462 708.5 501.5 596 625.998 497C814.115 347.41 1039.99 347.001 1039.99 347.001"
+                    stroke="#B07178" stroke-width="28" />
+                <path class="vector-path" pathLength="1"
+                    d="M306.498 721.999C306.498 721.999 380.5 511.001 592.999 379.999C807.765 247.6 1039 242.498 1039 242.498"
+                    stroke="#DFD0B8" stroke-width="52" />
+                <path class="vector-path" pathLength="1"
+                    d="M43.9991 735C43.9991 735 128.5 453.804 381.5 267.501C666 58.0018 1039.5 50.4989 1039.5 50.4989"
+                    stroke="#B07178" stroke-width="101" />
+                <path class="vector-path" pathLength="1"
+                    d="M555.5 722C555.5 722 614.277 598.905 759 515C911.364 426.664 1039.5 426.664 1039.5 426.664"
+                    stroke="#B07178" stroke-width="97" />
+                <path class="vector-path" pathLength="1"
+                    d="M822.501 748.5C822.501 748.5 873.934 683.511 920.501 660.001C972 634 1040.5 634 1040.5 634"
+                    stroke="#DFD0B8" stroke-width="140" />
+            </g>
+            <defs>
+                <clipPath id="clip0_424_92">
+                    <rect width="1040" height="704" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Navigation injected via nav-component.js -->
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="badge">v2.0 Prototype</div>
+                <h1>Translate Manhwa <br><span class="text-primary">Effortlessly</span></h1>
+                <p>Auto translate your manhwa with ease. Let ai do the heavy lifting so you can focus on scanlations
+                    quality. Designed with simplicity at its core.</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary btn-lg js-download-trigger">Download for Free</a>
+                    <a href="#workflow" class="btn btn-secondary btn-lg">See The Workflow</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Abstract visual or placeholder for app screenshot -->
+                <div class="glass-card">
+                    <div class="glow-effect"></div>
+                    <!-- Using the video from the first step as a hero visual preview -->
+                    <video autoplay loop muted playsinline
+                        src="https://github.com/user-attachments/assets/432fa7f7-9172-43b7-97c7-28e8d66b6758"
+                        class="hero-video"></video>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflow" class="workflow-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Your New Workflow</h2>
+                    <p>Streamline your process with intelligent automation.</p>
+                </div>
+
+                <div class="workflow-layout">
+                    <!-- Sticky Video Side -->
+                    <div class="workflow-visual">
+                        <div class="video-frame">
+                            <div class="video-stack">
+                                <video class="step-video active" id="video-step-1" autoplay loop muted playsinline
+                                    src="https://github.com/user-attachments/assets/432fa7f7-9172-43b7-97c7-28e8d66b6758"></video>
+                                <video class="step-video" id="video-step-2" autoplay loop muted playsinline
+                                    src="https://github.com/user-attachments/assets/2b255b1e-a036-4b98-b22c-5d72854a65c3"></video>
+                                <video class="step-video" id="video-step-3" autoplay loop muted playsinline
+                                    src="https://github.com/user-attachments/assets/a3269eb7-2849-4a44-840b-c5433d3ce8fc"></video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scrolling Steps Side -->
+                    <div class="workflow-steps">
+                        <div class="step-item" data-step="1">
+                            <div class="step-indicator">
+                                <span class="step-num">01</span>
+                                <div class="step-line"></div>
+                            </div>
+                            <div class="step-text">
+                                <h3>Import & Detect</h3>
+                                <p>Drag and drop your raw manhwa pages. Our AI instantly detects all text bubbles,
+                                    preparing them for translation.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-item" data-step="2">
+                            <div class="step-indicator">
+                                <span class="step-num">02</span>
+                                <div class="step-line"></div>
+                            </div>
+                            <div class="step-text">
+                                <h3>Auto-Translate & Clean</h3>
+                                <p>The app translates the text, removes the original script, and cleans the art behind
+                                    it in a single click.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-item" data-step="3">
+                            <div class="step-indicator">
+                                <span class="step-num">03</span>
+                                <div class="step-line"></div>
+                            </div>
+                            <div class="step-text">
+                                <h3>Review & Export</h3>
+                                <p>Make final edits to the translation or adjust the text style, then export your
+                                    finished chapter.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="comparison">
+            <div class="container">
+                <div class="section-header">
+                    <h2>See the Magic Happen</h2>
+                    <p>Slide to see the instant transformation.</p>
+                </div>
+
+                <div class="comparison-wrapper">
+                    <div class="comparison-layout">
+                        <!-- Text List (Left) -->
+                        <div class="comparison-previews">
+                            <div class="preview-item active"
+                                data-before="https://placehold.co/600x800/1a1a1a/FFF?text=Raw+Action"
+                                data-after="https://placehold.co/600x800/007bff/FFF?text=Translated+Action">
+                                <h3>Action Scenes</h3>
+                                <p>Clean redraws even over complex sound effects and motion lines.</p>
+                            </div>
+                            <div class="preview-item"
+                                data-before="https://placehold.co/600x800/2a2a2a/FFF?text=Raw+Dialogue"
+                                data-after="https://placehold.co/600x800/28a745/FFF?text=Translated+Dialogue">
+                                <h3>Context Aware</h3>
+                                <p>Translation engine that understands who is speaking to whom.</p>
+                            </div>
+                            <div class="preview-item" data-before="https://placehold.co/600x800/3a3a3a/FFF?text=Raw+SFX"
+                                data-after="https://placehold.co/600x800/dc3545/FFF?text=Translated+SFX">
+                                <h3>Smart Typography</h3>
+                                <p>Automatic font matching to keep the original vibe of the series.</p>
+                            </div>
+                            <div class="preview-item"
+                                data-before="https://placehold.co/600x800/4a4a4a/FFF?text=Raw+Complex"
+                                data-after="https://placehold.co/600x800/ffc107/FFF?text=Translated+Complex">
+                                <h3>Complex Layouts</h3>
+                                <p>Handles vertical text, bubbles over borders, and translucent bubbles.</p>
+                            </div>
+                        </div>
+
+                        <!-- Visual Slider (Right) -->
+                        <div class="comparison-main">
+                            <div class="comparison-slider" id="comparison-slider">
+                                <div class="comparison-image before-image">
+                                    <img id="comp-before" src="https://placehold.co/600x800/1a1a1a/FFF?text=Raw+Action"
+                                        alt="Raw">
+                                    <span class="label">Raw</span>
+                                </div>
+                                <div class="comparison-image after-image">
+                                    <img id="comp-after"
+                                        src="https://placehold.co/600x800/007bff/FFF?text=Translated+Action"
+                                        alt="Translated">
+                                    <span class="label">Translated</span>
+                                </div>
+                                <div class="comparison-handle">
+                                    <div class="handle-line"></div>
+                                    <div class="handle-circle">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor"
+                                            stroke-width="2" fill="none">
+                                            <path d="M21 12H3m18 0l-4-4m4 4l-4 4M3 12l4-4m-4 4l4 4" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="who-is-it-for" class="audience">
+            <div class="section-header">
+                <h2>Built for Speed and Quality</h2>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="icon-box">🚀</div>
+                    <h3>For Scanlation Groups</h3>
+                    <p>Accelerate your releases. Let AI handle the tedious work of initial translation, cleaning, and
+                        typesetting so your team can focus on polishing the final product.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="icon-box">⚡</div>
+                    <h3>For Solo Translators</h3>
+                    <p>Tackle an entire series by yourself. Our app automates 90% of the manual work, turning a
+                        team-sized project into a manageable solo hobby.</p>
+                </div>
+                <div class="audience-card">
+                    <div class="icon-box">📖</div>
+                    <h3>For Avid Readers</h3>
+                    <p>Can't wait for the official translation? Get instant, high-quality translations of any series for
+                        your own personal reading and enjoyment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Download our app today and take your productivity to the next level.</p>
+                <a href="#" class="btn btn-primary btn-lg js-download-trigger">Download Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Liiesl. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/Liiesl/EasyScanlate/">GitHub</a>
+                <a href="https://docs.easyscanlate.site/">Docs</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="non-windows-modal" class="modal-overlay">
+        <div class="modal-glass">
+            <button class="modal-close-btn">&times;</button>
+            <h3>Windows Only</h3>
+            <p>Easy Scanlate currently provides a direct installer for Windows only.</p>
+            <p>For other operating systems, you can build it from the source code.</p>
+            <div class="modal-actions">
+                <a href="https://github.com/Liiesl/EasyScanlate/" class="btn btn-secondary" target="_blank">GitHub</a>
+                <a href="https://docs.easyscanlate.site/getting-started/installation/#2-from-source-code-alternative-method"
+                    class="btn btn-primary" target="_blank">View Docs</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./nav-component.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
