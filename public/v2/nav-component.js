@@ -17,7 +17,7 @@
         nav.innerHTML = `
             <div class="nav-container">
                 <!-- Left: Logo -->
-                <a href="index.html" class="logo">
+                <a href="./index.html" class="logo">
                     <svg class="logo-icon" width="32" height="32" viewBox="0 0 1050 1041" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="1050" height="1041" rx="115" fill="#1A1A1A"/>
                         <path d="M626.352 165H425V366.351L365 426.351V165H278C216.144 165 166 215.144 166 277V770C166 831.856 216.144 882 278 882H365V734.768L425 720.869V882H630V669.729L742.333 559H883V420.341L943 361.197V770C943 864.993 865.993 942 771 942H278C183.007 942 106 864.993 106 770V277C106 182.007 183.007 105 278 105H686.352L626.352 165ZM690 882H771C832.856 882 883 831.856 883 770V619H690V882Z" fill="white"/>
@@ -28,10 +28,10 @@
 
                 <!-- Center: Main navigation links -->
                 <div class="nav-links nav-center">
-                    <a href="releases.html" ${currentPage === 'releases.html' ? 'class="active"' : ''}>Releases</a>
-                    <a href="roadmap.html" ${currentPage === 'roadmap.html' ? 'class="active"' : ''}>Roadmap</a>
+                    <a href="./releases.html" ${currentPage === 'releases.html' ? 'class="active"' : ''}>Releases</a>
+                    <a href="./roadmap.html" ${currentPage === 'roadmap.html' ? 'class="active"' : ''}>Roadmap</a>
                     <a href="https://docs.easyscanlate.site/" target="_blank">Docs</a>
-                    <a href="about.html" ${currentPage === 'about.html' ? 'class="active"' : ''}>About</a>
+                    <a href="./about.html" ${currentPage === 'about.html' ? 'class="active"' : ''}>About</a>
                 </div>
 
                 <!-- Right: Controls and actions -->
@@ -79,10 +79,10 @@
                 <button class="mobile-menu-close">&times;</button>
             </div>
             <div class="mobile-menu-links">
-                <a href="releases.html">Releases</a>
-                <a href="roadmap.html">Roadmap</a>
+                <a href="./releases.html">Releases</a>
+                <a href="./roadmap.html">Roadmap</a>
                 <a href="https://docs.easyscanlate.site/" target="_blank">Docs</a>
-                <a href="about.html">About</a>
+                <a href="./about.html">About</a>
             </div>
             <div class="mobile-menu-footer">
                 <a href="https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe"
