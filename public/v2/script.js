@@ -1,4 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // --- SMART VISIT TRACKING (BOT RESISTANT) ---
+    // Only track if we haven't tracked them in this browser session yet
+    // --- STRICT VISIT TRACKING (BOT RESISTANT) ---
+    if (!sessionStorage.getItem('easyscanlate_visit_tracked')) {
+        
+        let hasTracked = false;
+        let interactionScore = 0;
+        const REQUIRED_SCORE = 20; // The minimum amount of interaction needed
+
+        const trackHumanVisit = () => {
+            if (hasTracked) return;
+            hasTracked = true;
+
+            sessionStorage.setItem('easyscanlate_visit_tracked', 'true');
+
+            fetch('https://e.easyscanlate.site/visit', {
+                method: 'POST'
+            }).catch(err => console.error("Tracking failed", err));
+        };
+
+        const addScore = (points) => {
+            if (hasTracked) return;
+            interactionScore += points;
+            
+            if (interactionScore >= REQUIRED_SCORE) {
+                trackHumanVisit();
+            }
+        };
+
+        // 1. Mouse movement: Worth 1 point per movement. 
+        // A human naturally sweeping the mouse across the screen will hit 20 points in half a second.
+        window.addEventListener('mousemove', () => addScore(1), { passive: true });
+
+        // 2. Scrolling: Worth 5 points per scroll tick. 
+        // A human scrolling down to see your features will quickly hit 20 points.
+        window.addEventListener('scroll', () => addScore(5), { passive: true });
+
+        // 3. Clicks & Taps: Worth 20 points (Instant Pass). 
+        // If they click anywhere or tap their phone screen, we instantly know they are human.
+        window.addEventListener('click', () => addScore(20), { passive: true });
+        window.addEventListener('touchstart', () => addScore(20), { passive: true });
+        window.addEventListener('keydown', () => addScore(20), { passive: true });
+
+        // 4. Time on page: Worth 2 points per second.
+        // If they sit and read the hero section without touching the mouse for 10 seconds (10s x 2pts = 20), they pass.
+        const timeInterval = setInterval(() => {
+            if (hasTracked) {
+                clearInterval(timeInterval);
+            } else {
+                addScore(2);
+            }
+        }, 1000);
+    }
+    // ---------------------------------------------
+
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
     if (navbar) {
@@ -63,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- MODAL LOGIC (Fixing the "Not Appearing" issue) ---
+    // --- MODAL LOGIC ---
     const modal = document.getElementById('non-windows-modal');
     const closeBtn = document.querySelector('.modal-close-btn');
     const downloadBtns = document.querySelectorAll('.js-download-trigger');
@@ -83,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     modal.classList.add('active');
                 } else {
                     // If it is windows, but link is '#', prevent jump
+                    // (Note: We changed '#' to actual tracking URLs in HTML, so this won't trigger, which is correct! The link will open and track properly).
                     if (btn.getAttribute('href') === '#') {
                         e.preventDefault();
                     }
@@ -103,14 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- SMOOTH SCROLL (Fixed the SyntaxError Crash) ---
+    // --- SMOOTH SCROLL ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
 
-            // CRITICAL FIX: 
-            // If href is exactly "#", it is not a valid ID selector.
-            // We MUST return here to prevent the crash that was stopping your modal.
             if (href === '#' || href === '') return;
 
             e.preventDefault();

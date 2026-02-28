@@ -40,7 +40,8 @@
                         <span class="icon-sun">☀️</span>
                         <span class="icon-moon">🌙</span>
                     </button>
-                    <a href="https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe"
+                    <!-- CHANGED: Replaced Github URL with Cloudflare Worker Tracker URL -->
+                    <a href="https://e.easyscanlate.site/download?url=https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe"
                         class="btn btn-primary js-download-trigger">Download</a>
                     <button id="burger-menu-toggle" class="burger-toggle" title="Open menu">
                         <span></span>
@@ -85,7 +86,8 @@
                 <a href="./about.html">About</a>
             </div>
             <div class="mobile-menu-footer">
-                <a href="https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe"
+                <!-- CHANGED: Replaced Github URL with Cloudflare Worker Tracker URL -->
+                <a href="https://e.easyscanlate.site/download?url=https://github.com/Liiesl/EasyScanlate/releases/download/latest/EasyScanlate-Installer.exe"
                     class="btn btn-primary js-download-trigger">Download</a>
             </div>
         `;
