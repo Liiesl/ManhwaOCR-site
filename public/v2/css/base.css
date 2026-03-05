@@ -11,7 +11,11 @@ html {
 body {
     font-family: var(--font-body);
     background-color: var(--color-bg);
-    background-image: radial-gradient(circle at center, var(--color-bg-glow) 0%, transparent 60%);
+    background-image: radial-gradient(
+        circle at center,
+        var(--color-bg-glow) 0%,
+        transparent 60%
+    );
     background-attachment: fixed;
     color: var(--color-text);
     line-height: 1.6;
@@ -22,8 +26,7 @@ body {
 .background-gradient {
     display: none;
 }
-
-/* Vector Background */
+/* Vector Background Container */
 .vector-background {
     position: fixed;
     bottom: 0;
@@ -33,6 +36,8 @@ body {
     height: auto;
     z-index: -1;
     pointer-events: none;
+    /* Soft premium glow */
+    filter: drop-shadow(0 0 30px rgba(176, 113, 120, 0.15));
 }
 
 .vector-background svg {
@@ -40,30 +45,110 @@ body {
     height: auto;
     display: block;
     overflow: visible;
+    transform-origin: center;
 }
 
-.vector-path {
+/* Filled Center Shape */
+.vector-fill {
+    /* Uses Opacity for the filled shape */
+    opacity: calc(1 * var(--draw-progress, 1));
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+    animation: path-breathe 4s ease-in-out infinite alternate;
+}
+
+/* Stroked Rings */
+.vector-shape {
     /* 
-       Animation Logic:
-       1. pathLength="1" in HTML makes the total length of every curve equal to 1.
-       2. stroke-dasharray: 1 creates a dash that is exactly the length of the curve.
-       3. stroke-dashoffset controls the visibility. 
-          1 = Fully hidden (pushed back).
-          0 = Fully visible (drawn).
+       OLD: stroke-dasharray: 1; 
+       NEW: 0.85 line, 0.15 gap.
+       This creates a "C" shape. Because pathLength="1", 
+       this means 85% is drawn, 15% is empty. 
+       The ring will effectively loop forever without disappearing.
     */
-    stroke-dasharray: 1;
-    stroke-dashoffset: var(--draw-progress, 1);
-
-    /* We removed the custom stroke styling here to let the SVG's own stroke-width attributes work */
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.9;
-
-    /* Use a linear transition for immediate response to scroll */
-    transition: stroke-dashoffset 0.05s linear;
-
-    /* Ensures they start hidden if JS takes a moment to load */
+    stroke-dasharray: 0.35, 0.1, 0.35, 0.1, 0.10, 0.1; 
+    stroke-linecap: butt;
     fill: none;
+    /* Breathing opacity */
+    animation: path-breathe 4s ease-in-out infinite alternate;
+}
+
+/*
+   ANIMATION VARIATION LOGIC:
+   nth-child(1) is the filled shape.
+   nth-child(2) to (11) are the rings.
+   
+   To create variation:
+   1. Vary the multiplier in calc(). Higher numbers = draws later/slower relative to scroll.
+   2. Vary the transition duration. Higher seconds = more "lag" and smoothness.
+*/
+
+/* 2: Inner - Fast */
+.vector-shape:nth-child(2) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 0.9);
+    transition: stroke-dashoffset 1.0s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3: Inner - Med Lag */
+.vector-shape:nth-child(3) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.3);
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 4: Inner - Standard */
+.vector-shape:nth-child(4) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.1);
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 5: Middle - Very Slow/Laggy */
+.vector-shape:nth-child(5) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.5);
+    transition: stroke-dashoffset 2.0s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 6: Middle - Fast */
+.vector-shape:nth-child(6) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 0.95);
+    transition: stroke-dashoffset 1.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 7: Middle - Standard */
+.vector-shape:nth-child(7) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.25);
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 8: Outer - Heavy/Slow */
+.vector-shape:nth-child(8) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.6);
+    transition: stroke-dashoffset 2.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 9: Outer - Standard */
+.vector-shape:nth-child(9) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.0);
+    transition: stroke-dashoffset 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 10: Outer - Laggy */
+.vector-shape:nth-child(10) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.4);
+    transition: stroke-dashoffset 1.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 11: Outer - Standard */
+.vector-shape:nth-child(11) {
+    stroke-dashoffset: calc((1 - var(--draw-progress, 1)) * 1.15);
+    transition: stroke-dashoffset 1.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes path-breathe {
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Responsive adjustments */
