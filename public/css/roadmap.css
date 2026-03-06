@@ -13,11 +13,10 @@
 
 .kanban-column {
     flex: 1;
-    background-color: var(--surface-secondary-color);
-    border-radius: 8px;
+    /* background-color: rgba(255, 255, 255, 0.02); */
+    border-radius: var(--radius-md);
     padding: 1rem;
     min-width: 250px;
-    transition: background-color 0.3s ease;
 }
 
 .kanban-column h3 {
@@ -25,43 +24,42 @@
     margin-top: 0;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--border-color);
-    transition: border-color 0.3s ease;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
 }
 
 .kanban-card {
-    background-color: var(--surface-color);
-    border-radius: 5px;
-    padding: 1rem;
+    background: var(--color-surface-glass);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
     margin-bottom: 1rem;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+.kanban-card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
 }
 
 .kanban-card p {
     margin: 0;
     font-size: 0.95rem;
+    color: var(--color-text);
+    line-height: 1.5;
 }
 
-/* Reusing tag styles from page.css for consistency */
+/* Reusing tag styles from pages.css, but ensuring they work here */
 .kanban-card .tag {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
-    color: #fff;
-    margin-bottom: 0.5rem; /* Space between tag and text */
-    text-transform: capitalize;
+    margin-bottom: 0.75rem;
 }
 
-.tag.new { background-color: #28a745; }
-.tag.improved { background-color: #17a2b8; }
-.tag.fixed { background-color: #dc3545; }
-
-/* NEW: Styles for nested sub-task lists */
+/* Nested sub-task lists */
 .subtask-list {
-    list-style-type: circle;
+    list-style-type: disc;
+    /* Changed to disc for better visibility */
     padding-left: 20px;
     margin-top: 0.75rem;
     margin-bottom: 0;
@@ -69,7 +67,7 @@
 
 .subtask-list li {
     font-size: 0.9rem;
-    color: var(--secondary-color);
+    color: var(--color-text-muted);
     margin-bottom: 0.25rem;
 }
 
@@ -77,71 +75,80 @@
 .empty-message,
 .error-message {
     font-style: italic;
-    color: var(--secondary-color);
+    color: var(--color-text-muted);
     padding: 1rem;
     text-align: center;
 }
 
 .error-message {
-    color: #dc3545;
-    font-weight: bold;
+    color: #f44336;
+    font-weight: 600;
 }
 
 
 /* Styles for the future release plans */
 #future-releases {
-    margin-top: 4rem;
+    margin-top: 5rem;
 }
 
-/* NEW: Container for each release phase (e.g., "Beta Phase") */
 .release-phase {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
-/* NEW: Styling for the main phase heading (<h3>) */
-.release-phase > h3 {
-    font-size: 1.6rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.75rem;
-    margin-bottom: 0.5rem;
+.release-phase>h3 {
+    font-size: 1.75rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
 }
 
-/* NEW: Styling for the phase description paragraph */
-.release-phase > p {
-    font-style: italic;
-    color: var(--secondary-color);
+.release-phase>p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
     margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 .release-plan {
     margin-bottom: 2rem;
-    background-color: var(--surface-secondary-color);
-    padding: 1.5rem 2rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-    border-left: 4px solid var(--accent-color, #007bff); /* Adds a nice accent color */
+    background: var(--color-surface-glass);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
 }
 
-/* MODIFIED: Changed h3 to h4 to match the new HTML structure */
+.release-plan:hover {
+    box-shadow: var(--shadow-lg);
+}
+
 .release-plan h4 {
     margin-top: 0;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    color: var(--color-text);
 }
 
 .release-plan ul {
     padding-left: 20px;
+    margin: 0;
 }
 
 .release-plan li {
     margin-bottom: 0.5rem;
+    color: var(--color-text-muted);
 }
 
-
-
-/* Responsive styles for the roadmap page */
+/* Responsive styles */
 @media (max-width: 900px) {
     .kanban-board {
         flex-direction: column;
+    }
+
+    .kanban-column {
+        margin-bottom: 2rem;
     }
 }

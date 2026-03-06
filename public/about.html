@@ -1,56 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - My Awesome Desktop App</title>
-    <!-- Link to refactored CSS files -->
-    <link rel="stylesheet" href="css/root.css">
-    <link rel="stylesheet" href="css/topbar.css">
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/page.css">
+    <title>About - Easy Scanlate</title>
+    <link rel="icon" type="image/x-icon" href="assets/Frame 17.ico">
 
-    <script>
-      (function() {
-        // Function to set the theme
-        function setTheme(theme) {
-          document.documentElement.setAttribute('data-theme', theme);
-          localStorage.setItem('theme', theme);
-        }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-        // Check for a saved theme in localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-          document.documentElement.setAttribute('data-theme', savedTheme);
-          return;
-        }
-
-        // If no saved theme, check the OS/browser preference
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-
-      })();
-    </script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="v2/css/style.css">
 </head>
+
 <body>
+    <!-- Decorative Vector Background -->
+    <div class="vector-background">
+        <svg width="1040" height="704" viewBox="0 0 1040 704" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_424_92)">
+                <path class="vector-path" pathLength="1"
+                    d="M462 708.5C462 708.5 501.5 596 625.998 497C814.115 347.41 1039.99 347.001 1039.99 347.001"
+                    stroke="#B07178" stroke-width="28" />
+                <path class="vector-path" pathLength="1"
+                    d="M306.498 721.999C306.498 721.999 380.5 511.001 592.999 379.999C807.765 247.6 1039 242.498 1039 242.498"
+                    stroke="#DFD0B8" stroke-width="52" />
+                <path class="vector-path" pathLength="1"
+                    d="M43.9991 735C43.9991 735 128.5 453.804 381.5 267.501C666 58.0018 1039.5 50.4989 1039.5 50.4989"
+                    stroke="#B07178" stroke-width="101" />
+                <path class="vector-path" pathLength="1"
+                    d="M555.5 722C555.5 722 614.277 598.905 759 515C911.364 426.664 1039.5 426.664 1039.5 426.664"
+                    stroke="#B07178" stroke-width="97" />
+                <path class="vector-path" pathLength="1"
+                    d="M822.501 748.5C822.501 748.5 873.934 683.511 920.501 660.001C972 634 1040.5 634 1040.5 634"
+                    stroke="#DFD0B8" stroke-width="140" />
+            </g>
+            <defs>
+                <clipPath id="clip0_424_92">
+                    <rect width="1040" height="704" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
 
-    <header id="main-header"></header>
+    <!-- Navigation injected via nav-component.js -->
 
-    <main class="page-container">
-        <h1>About Our App</h1>
-        <p>Welcome to "My Awesome Desktop App," the ultimate solution for enhancing My productivity and streamlining My workflow. Our mission is to provide an intuitive, powerful, and elegant tool that helps you focus on what truly matters.</p>
-        
-        <h2>Our Story</h2>
-        <p>Founded in 2025 by a team of passionate developers and designers, our company was born out of a simple need: a better way to work. We were tired of juggling multiple applications and dealing with clunky interfaces. We knew there had to be a more efficient and enjoyable way to manage our daily tasks. So, we decided to build it ourselves.</p>
-        
-        <h2>Our Philosophy</h2>
-        <p>We believe that software should be a joy to use. It should be fast, reliable, and beautiful. Every feature we build, every design decision we make, is guided by our commitment to user experience. We listen to our users, and we are constantly working to improve our application based on My feedback.</p>
+    <main class="page-content">
+        <div class="container">
+            <div class="text-content">
+                <h1>About Easy Scanlate</h1>
+                <p class="lead">The ultimate solution for enhancing your productivity and streamlining your scanlation
+                    workflow.</p>
+
+                <h2>Our Mission</h2>
+                <p>Our mission is to provide an intuitive, powerful, and elegant tool that helps you focus on what truly
+                    matters: quality translations. We believe that automation should empower creators, not replace them.
+                </p>
+
+                <h2>Our Story</h2>
+                <p>Founded in 2025 by a team of passionate developers and scanlation enthusiasts, Easy Scanlate was born
+                    out of a simple need: a better way to work. We were tired of juggling multiple applications for OCR,
+                    translation, and cleaning. We knew there had to be a more efficient and enjoyable way to manage our
+                    daily tasks. So, we decided to build it ourselves.</p>
+
+                <h2>Our Philosophy</h2>
+                <p>We believe that software should be a joy to use. It should be fast, reliable, and beautiful. Every
+                    feature we build, every design decision we make, is guided by our commitment to user experience. We
+                    listen to our users, and we are constantly working to improve our application based on your
+                    feedback.</p>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 My Company Name. All rights reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Liiesl. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/Liiesl/EasyScanlate/">GitHub</a>
+                <a href="https://docs.easyscanlate.site/">Docs</a>
+            </div>
+        </div>
     </footer>
 
-    <script type="module" src="main.js"></script>
+    <script src="v2/nav-component.js"></script>
+    <script src="v2/script.js"></script>
 </body>
+
 </html>
