@@ -13,13 +13,19 @@
 
 .workflow-section .section-header {
     position: sticky;
-    top: 100px;
+    top: 84px;
     z-index: 20;
     background: transparent;
     backdrop-filter: blur(10px);
-    padding: 1rem;
-    border-radius: var(--radius-md);
-    transition: var(--transition);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 0;
+    padding: 1rem 0;
+    border-radius: 0;
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    max-width: none;
 }
 
 .workflow-layout {
@@ -72,26 +78,42 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    /* Removed large gap, spacing is now handled by step-item height for the sticky effect */
+    /* Spacing is handled by step-item height for the sticky effect */
     gap: 0;
     padding-top: 0;
-    padding-bottom: 20vh;
+    padding-bottom: 12vh;
     /* Extra space at bottom to let the last item scroll out */
+    position: relative;
+}
+
+/* Single continuous rail behind the numbers — replaces per-item stubs */
+.workflow-steps::before {
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: var(--color-border);
+    opacity: 0.6;
 }
 
 .step-item {
     display: flex;
-    gap: 2rem;
-    opacity: 0.3;
-    transition: opacity 0.5s ease;
-    /* Make container tall so sticky content floats inside it until next step hits */
-    min-height: 100vh;
+    gap: 1.25rem;
+    opacity: 0.45;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    /* Tall enough for sticky travel + observer isolation, without 100vh dead scroll */
+    min-height: 72vh;
     align-items: flex-start;
-    padding-top: 2rem;
+    padding-top: 0;
+    position: relative;
 }
 
 .step-item.active {
     opacity: 1;
+    transform: translateY(0);
 }
 
 /* Make the content sticky inside the tall step-item container */
@@ -109,29 +131,38 @@
     align-items: center;
     gap: 1rem;
     min-width: 3rem;
+    align-self: stretch;
+    z-index: 1;
 }
 
 .step-num {
     font-family: var(--font-main);
-    font-size: 1.25rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    color: var(--color-primary);
-    background: rgba(176, 113, 120, 0.1);
-    width: 3rem;
-    height: 3rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    background: var(--color-bg);
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    border: 1px solid rgba(176, 113, 120, 0.2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+.step-item.active .step-num {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+/* Old per-item stub is superseded by .workflow-steps::before */
 .step-line {
-    width: 2px;
-    flex: 1;
-    background: var(--color-border);
-    opacity: 0.3;
-    min-height: 100px;
+    display: none;
 }
 
 .step-item:last-child .step-line {
@@ -139,23 +170,53 @@
 }
 
 .step-text {
-    padding-top: 0.5rem;
+    padding-top: 2px;
+    max-width: 38ch;
+}
+
+.step-kicker {
+    display: block;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.6rem;
+    opacity: 0.8;
+}
+
+.step-item.active .step-kicker {
+    color: var(--color-primary);
+    opacity: 1;
 }
 
 .step-text h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: white;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
 }
 
 .step-text p {
-    font-size: 1.125rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0;
     color: var(--color-text-muted);
 }
 
 @media (max-width: 768px) {
     .workflow-layout {
         flex-direction: column;
+    }
+
+    .workflow-section .section-header {
+        position: static;
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-bottom: 0;
     }
 
     .workflow-visual {
@@ -166,13 +227,18 @@
     }
 
     .workflow-steps {
-        gap: 4rem;
+        gap: 2rem;
         padding: 0;
+    }
+
+    .workflow-steps::before {
+        display: none;
     }
 
     .step-item {
         min-height: auto;
         opacity: 1;
+        transform: none;
         padding-top: 0;
     }
 
@@ -181,6 +247,10 @@
     .step-text {
         position: static;
         top: auto;
+    }
+
+    .step-indicator {
+        align-self: flex-start;
     }
 
     .step-line {

@@ -212,10 +212,28 @@ document.addEventListener('DOMContentLoaded', () => {
         stepItems.forEach(item => observer.observe(item));
     }
 
-    // Vector Background Animation
+    // Vector Background — scroll-linked draw + slow idle revolution (fast while scrolling)
+    // (Breathing stays pure CSS; only the rings' circling motion is driven here.)
     const vectorBg = document.querySelector('.vector-background');
     if (vectorBg) {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Per-ring scroll factors mirror the nth-child rules in base.css (children 2-11)
+        const REV_FACTORS = [0.9, 1.3, 1.1, 1.5, 0.95, 1.25, 1.6, 1.0, 1.4, 1.15];
+        const PATTERN_LEN = 1.1; // dash cycle: 0.35+0.1+0.35+0.1+0.10+0.1
+        const IDLE_SPEED = PATTERN_LEN / 600; // dash units/sec when idle (~10min per revolution)
+        const SCROLL_SPEED = 0.1; // dash units/sec while scrolling (~11s per revolution)
+        const IDLE_AFTER = 350; // ms of no scroll before easing back to idle speed
+        const rings = Array.from(vectorBg.querySelectorAll('.vector-shape'));
+
+        let lastScroll = -Infinity;
+        let lastY = window.scrollY;
+        let scrollDir = 1; // +1 scrolling down, -1 scrolling up
+
         window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            if (y !== lastY) scrollDir = y > lastY ? 1 : -1;
+            lastY = y;
+            lastScroll = performance.now();
             requestAnimationFrame(() => {
                 const scrollY = window.scrollY;
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -223,7 +241,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 const drawOffset = 1 - scrollPercent;
                 vectorBg.style.setProperty('--draw-progress', drawOffset);
             });
-        });
+        }, { passive: true });
+
+        if (!reduceMotion && rings.length > 0) {
+            vectorBg.classList.add('js-rev');
+            const n = rings.length;
+            // Orbital shear: inner rings circle faster, outer rings slower.
+            // (One shared phase made every ring's gaps stack up radially.)
+            const orbitMul = rings.map((_, i) => 1.6 - (i / Math.max(1, n - 1)) * 1.1);
+            // Staggered starting phases spread around your 0.4 base, so gaps
+            // never line up across rings.
+            const BASE_PHASE = 0.4;
+            const revs = rings.map((_, i) => (BASE_PHASE + (i * PATTERN_LEN) / n) % PATTERN_LEN);
+            const vels = rings.map(() => scrollDir * IDLE_SPEED);
+            let prev = performance.now();
+
+            const tick = (now) => {
+                const dt = Math.min(0.1, (now - prev) / 1000);
+                prev = now;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollT = docHeight > 0
+                    ? Math.min(1, Math.max(0, window.scrollY / docHeight))
+                    : 0;
+                // Scrolling sets the pace; direction always follows the last scroll
+                // gesture — scroll up and the slow idle crawl keeps drifting backward
+                // until you scroll down again.
+                const pace = (now - lastScroll < IDLE_AFTER) ? SCROLL_SPEED : IDLE_SPEED;
+                const k = Math.min(1, dt * 5);
+                rings.forEach((ring, i) => {
+                    const target = scrollDir * pace * orbitMul[i];
+                    vels[i] += (target - vels[i]) * k;
+                    revs[i] = (((revs[i] + vels[i] * dt) % PATTERN_LEN) + PATTERN_LEN) % PATTERN_LEN;
+                    ring.style.strokeDashoffset = String(scrollT * (REV_FACTORS[i] ?? 1) + revs[i]);
+                });
+                requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        }
     }
 
     // Theme Toggle Logic

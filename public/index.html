@@ -64,13 +64,15 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <!-- Abstract visual or placeholder for app screenshot -->
-                <div class="glass-card">
-                    <div class="glow-effect"></div>
-                    <!-- Using the video from the first step as a hero visual preview -->
+                <figure class="hero-shot">
+                    <div class="hero-meta" aria-hidden="true">
+                        <span class="hero-fig">App preview</span>
+                        <span class="hero-side">Raw &rarr; EN</span>
+                    </div>
                     <img src="https://cdn.pileofthings.top/1772832528919-78a386a9adf2e999491ffe8f03b2f1ca.webp"
-                        class="hero-video"></img>
-                </div>
+                        class="hero-video" alt="EasyScanlate translating a manhwa page">
+                    <figcaption class="hero-caption">Raw page &rarr; cleaned + typeset in one pass</figcaption>
+                </figure>
             </div>
         </section>
 
@@ -104,6 +106,7 @@
                                 <div class="step-line"></div>
                             </div>
                             <div class="step-text">
+                                <span class="step-kicker">Step 01</span>
                                 <h3>Import & Detect</h3>
                                 <p>Drag and drop your raw manhwa pages. Our AI instantly detects all text bubbles,
                                     preparing them for translation.</p>
@@ -116,6 +119,7 @@
                                 <div class="step-line"></div>
                             </div>
                             <div class="step-text">
+                                <span class="step-kicker">Step 02</span>
                                 <h3>Auto-Translate & Clean</h3>
                                 <p>The app translates the text, removes the original script, and cleans the art behind
                                     it in a single click.</p>
@@ -128,6 +132,7 @@
                                 <div class="step-line"></div>
                             </div>
                             <div class="step-text">
+                                <span class="step-kicker">Step 03</span>
                                 <h3>Review & Export</h3>
                                 <p>Make final edits to the translation or adjust the text style, then export your
                                     finished chapter.</p>
@@ -207,25 +212,54 @@
         <section id="who-is-it-for" class="audience">
             <div class="section-header">
                 <h2>Built for Speed and Quality</h2>
+                <p>One tool, three ways to work — pick the pace that fits your team.</p>
             </div>
             <div class="audience-grid">
                 <div class="audience-card">
-                    <div class="icon-box">🚀</div>
-                    <h3>For Scanlation Groups</h3>
-                    <p>Accelerate your releases. Let AI handle the tedious work of initial translation, cleaning, and
-                        typesetting so your team can focus on polishing the final product.</p>
+                    <span class="audience-index">01</span>
+                    <span class="audience-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </span>
+                    <div class="audience-body">
+                        <h3>For Scanlation Groups</h3>
+                        <p>Accelerate your releases. Let AI handle the tedious work of initial translation, cleaning, and
+                            typesetting so your team can focus on polishing the final product.</p>
+                    </div>
                 </div>
                 <div class="audience-card">
-                    <div class="icon-box">⚡</div>
-                    <h3>For Solo Translators</h3>
-                    <p>Tackle an entire series by yourself. Our app automates 90% of the manual work, turning a
-                        team-sized project into a manageable solo hobby.</p>
+                    <span class="audience-index">02</span>
+                    <span class="audience-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                    </span>
+                    <div class="audience-body">
+                        <h3>For Solo Translators</h3>
+                        <p>Tackle an entire series by yourself. Our app automates 90% of the manual work, turning a
+                            team-sized project into a manageable solo hobby.</p>
+                    </div>
                 </div>
                 <div class="audience-card">
-                    <div class="icon-box">📖</div>
-                    <h3>For Avid Readers</h3>
-                    <p>Can't wait for the official translation? Get instant, high-quality translations of any series for
-                        your own personal reading and enjoyment.</p>
+                    <span class="audience-index">03</span>
+                    <span class="audience-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        </svg>
+                    </span>
+                    <div class="audience-body">
+                        <h3>For Avid Readers</h3>
+                        <p>Can't wait for the official translation? Get instant, high-quality translations of any series for
+                            your own personal reading and enjoyment.</p>
+                    </div>
                 </div>
             </div>
         </section>

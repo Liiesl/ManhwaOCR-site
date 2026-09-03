@@ -65,11 +65,16 @@ body {
        this means 85% is drawn, 15% is empty. 
        The ring will effectively loop forever without disappearing.
     */
-    stroke-dasharray: 0.35, 0.1, 0.35, 0.1, 0.10, 0.1; 
+    stroke-dasharray: 0.35, 0.1, 0.35, 0.1, 0.10, 0.1;
     stroke-linecap: butt;
     fill: none;
     /* Breathing opacity */
     animation: path-breathe 4s ease-in-out infinite alternate;
+}
+
+/* When JS drives ring revolution per-frame, drop the dashoffset lag so rings track exactly */
+.vector-background.js-rev .vector-shape {
+    transition: none;
 }
 
 /*

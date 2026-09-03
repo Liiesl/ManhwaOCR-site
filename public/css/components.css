@@ -1,14 +1,29 @@
-/* Buttons */
+/* Buttons — sharp system, no pills */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
     font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
     text-decoration: none;
-    transition: var(--transition);
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     font-family: var(--font-main);
+    cursor: pointer;
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.99);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
 }
 
 .btn-lg {
@@ -18,63 +33,109 @@
 
 .btn-primary {
     background: var(--color-primary);
+    border-color: rgba(0, 0, 0, 0.2);
     color: white;
-    box-shadow: var(--shadow-glow);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), var(--shadow-sm);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 0 30px var(--color-primary-glow);
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), var(--shadow-lg);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    backdrop-filter: blur(10px);
+    background: transparent;
+    color: var(--color-text);
     border: 1px solid var(--color-border);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--color-text-muted);
+    transform: translateY(-1px);
 }
 
-/* Badge */
+/* Badge — square version tag, not a pill */
 .badge {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: rgba(176, 113, 120, 0.1);
-    border: 1px solid rgba(176, 113, 120, 0.2);
-    border-radius: var(--radius-full);
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 0.875rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Glass Card */
-.glass-card {
-    background: var(--color-surface-glass);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.75rem;
+    background: transparent;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 1rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-    transition: transform 0.5s ease;
-}
-
-.glass-card:hover {
-    transform: perspective(1000px) rotateY(0) rotateX(0);
-}
-
-.glow-effect {
-    display: none;
-}
-
-/* Icon Box */
-.icon-box {
-    font-size: 2.5rem;
+    border-left: 3px solid var(--color-primary);
+    border-radius: 4px;
+    color: var(--color-text-muted);
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     margin-bottom: 1.5rem;
+}
+
+.badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    flex-shrink: 0;
+}
+
+/* Hero Shot — labeled 16:9 figure, no card, no chrome */
+.hero-shot {
+    margin: 0;
+    width: 100%;
+}
+
+.hero-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.hero-fig {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.hero-fig::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.hero-side {
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+}
+
+.hero-shot .hero-video {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-caption {
+    padding-top: 0.7rem;
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted);
 }
 
 /* Modal */
