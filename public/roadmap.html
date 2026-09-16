@@ -48,87 +48,141 @@
 
     <!-- Navigation injected via nav-component.js -->
 
-    <main class="page-content">
-        <div class="container">
-            <div class="section-header">
+    <main class="page-content roadmap-page">
+        <div class="container roadmap-container">
+            <div class="section-header roadmap-header">
                 <h1>Roadmap</h1>
-                <p>This roadmap is generated directly from the <a
+                <p>Generated directly from the <a
                         href="https://github.com/Liiesl/EasyScanlate/blob/main/todo.md" target="_blank"
                         rel="noopener noreferrer"
-                        style="color: var(--color-primary); text-decoration: underline;"><code>todo.md</code></a> file
-                    in our GitHub repository, giving you a real-time
-                    look at our progress.</p>
+                        style="color: var(--color-primary); text-decoration: underline;"><code>todo.md</code></a>
+                    file in our GitHub repository — a real-time look at what we're building.</p>
+                <div class="roadmap-meta" aria-label="Board legend">
+                    <span class="roadmap-meta-item"><span class="tag new">New</span> Addition</span>
+                    <span class="roadmap-meta-item"><span class="tag improved">Changed</span> Modification</span>
+                    <span class="roadmap-meta-item"><span class="tag fixed">Fixed</span> Fix</span>
+                    <span class="roadmap-meta-sep" aria-hidden="true"></span>
+                    <a class="roadmap-meta-link" href="./releases.html">See what's shipped &rarr;</a>
+                </div>
             </div>
 
-            <section id="kanban">
+            <section id="kanban" aria-live="polite">
                 <div class="kanban-board">
                     <!-- Column 1: Not Yet Started -->
                     <div class="kanban-column">
-                        <h3>Not Yet Started</h3>
+                        <div class="kanban-column-head">
+                            <span class="kanban-index" aria-hidden="true">01</span>
+                            <div class="kanban-head-text">
+                                <h3>Not Yet Started</h3>
+                                <span class="kanban-status"><i class="status-dot status-todo"></i>Queued</span>
+                            </div>
+                        </div>
                         <div class="column-content" id="col-not-started">
                             <!-- Content will be dynamically inserted here -->
-                            <p class="loading-message">Loading tasks from GitHub...</p>
+                            <div class="column-scrollarea">
+                                <div class="skeleton-card" aria-hidden="true"><span class="skeleton-line w-40"></span><span class="skeleton-line"></span><span class="skeleton-line w-70"></span></div>
+                                <div class="skeleton-card" aria-hidden="true"><span class="skeleton-line w-60"></span><span class="skeleton-line w-80"></span></div>
+                            </div>
+                            <div class="column-scrolltrack" aria-hidden="true"><div class="column-scrollthumb"></div></div>
                         </div>
                     </div>
 
                     <!-- Column 2: In Progress -->
-                    <div class="kanban-column">
-                        <h3>In Progress</h3>
+                    <div class="kanban-column kanban-column-active">
+                        <div class="kanban-column-head">
+                            <span class="kanban-index" aria-hidden="true">02</span>
+                            <div class="kanban-head-text">
+                                <h3>In Progress</h3>
+                                <span class="kanban-status"><i class="status-dot status-progress"></i>Active now</span>
+                            </div>
+                        </div>
                         <div class="column-content" id="col-in-progress">
                             <!-- Content will be dynamically inserted here -->
-                            <p class="loading-message">Loading tasks from GitHub...</p>
+                            <div class="column-scrollarea">
+                                <div class="skeleton-card" aria-hidden="true"><span class="skeleton-line w-50"></span><span class="skeleton-line"></span><span class="skeleton-line w-70"></span></div>
+                            </div>
+                            <div class="column-scrolltrack" aria-hidden="true"><div class="column-scrollthumb"></div></div>
                         </div>
                     </div>
 
                     <!-- Column 3: Done -->
                     <div class="kanban-column">
-                        <h3>Done (Waiting for Release)</h3>
+                        <div class="kanban-column-head">
+                            <span class="kanban-index" aria-hidden="true">03</span>
+                            <div class="kanban-head-text">
+                                <h3>Done</h3>
+                                <span class="kanban-status"><i class="status-dot status-done"></i>Waiting for release</span>
+                            </div>
+                        </div>
                         <div class="column-content" id="col-done">
                             <!-- Content will be dynamically inserted here -->
-                            <p class="loading-message">Loading tasks from GitHub...</p>
+                            <div class="column-scrollarea">
+                                <div class="skeleton-card" aria-hidden="true"><span class="skeleton-line w-40"></span><span class="skeleton-line w-80"></span></div>
+                            </div>
+                            <div class="column-scrolltrack" aria-hidden="true"><div class="column-scrollthumb"></div></div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="future-releases">
-                <h2>Future Releases</h2>
+                <div class="releases-head">
+                    <span class="releases-kicker">Where this is headed</span>
+                    <h2>Future Releases</h2>
+                    <p>Milestones consolidate the live board above into shippable phases. Details still land in <a href="./releases.html">Release Notes</a> when they ship.</p>
+                </div>
 
                 <div class="release-phase">
-                    <h3>Beta Phase</h3>
-                    <p>This phase focuses on implementing core features, refining workflows, and improving stability
-                        based
-                        on user feedback.</p>
+                    <div class="phase-head">
+                        <span class="audience-index" aria-hidden="true">01</span>
+                        <div>
+                            <h3>Beta Phase</h3>
+                            <p>Core features, workflow refinements, and stability improvements driven by user feedback.</p>
+                        </div>
+                    </div>
 
                     <div class="release-plan">
-                        <h4>Version 0.2.0 - Core Functionality & Performance</h4>
+                        <div class="release-plan-head">
+                            <h4>Next Up — Typography, Fonts &amp; Workflow</h4>
+                            <span class="tag new">New</span>
+                        </div>
                         <ul>
-                            <li>Context Fill & Hide Text</li>
-                            <li>Startup Performance Fixes</li>
-                            <li>Improved App Sync and Menu Layouts</li>
+                            <li>Manual textbox insertion + z-index reordering</li>
+                            <li>Font fixes, live preview, and more bundled fonts</li>
+                            <li>Directional blur, drop shadow &amp; textbox styles</li>
                         </ul>
                     </div>
                     <div class="release-plan">
-                        <h4>Version 0.3.0 - Advanced Tools & Customization</h4>
+                        <div class="release-plan-head">
+                            <h4>Next — OCR, Inpaint &amp; Export</h4>
+                            <span class="tag improved">Changed</span>
+                        </div>
                         <ul>
-                            <li>Mica Effect & Manual Textbox Insertion</li>
-                            <li>Watermarking & Advanced Typography Styles</li>
-                            <li>Reworked Translation Workflow with Dictionaries</li>
+                            <li>OCR export targets: tagging, PDF, docs</li>
+                            <li>Advanced inpaint: free-form select, toggle, undo/redo</li>
+                            <li>Dynamic import &rarr; OCR &rarr; translation linking</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="release-phase">
-                    <h3>Public Stable Release</h3>
-                    <p>This marks the first official, stable version of the application, ready for a wider audience and
-                        general use.</p>
+                    <div class="phase-head">
+                        <span class="audience-index" aria-hidden="true">02</span>
+                        <div>
+                            <h3>Public Stable Release</h3>
+                            <p>The first official, stable version — ready for a wider audience and general use.</p>
+                        </div>
+                    </div>
 
-                    <div class="release-plan">
-                        <h4>Version 1.0.0 - Official Launch</h4>
+                    <div class="release-plan release-plan-stable">
+                        <div class="release-plan-head">
+                            <h4>Version 1.0.0 — Official Launch</h4>
+                            <span class="tag fixed">Goal</span>
+                        </div>
                         <ul>
-                            <li>Mica Effect & Manual Textbox Insertion</li>
-                            <li>Watermarking & Advanced Typography Styles</li>
-                            <li>Reworked Translation Workflow with Dictionaries</li>
+                            <li>Watermarking + automatic watermark detection &amp; inpaint</li>
+                            <li>Reworked translation workflow with character / place / lore dictionaries</li>
+                            <li>Profile improvements, window state memory, and polish</li>
                         </ul>
                     </div>
                 </div>
@@ -149,6 +203,7 @@
     <script src="./nav-component.js"></script>
     <script src="./js/roadmap.js"></script>
     <script src="./script.js"></script>
+    <script src="./js/e.js"></script>
 </body>
 
 </html>

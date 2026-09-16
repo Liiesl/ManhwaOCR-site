@@ -1,59 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- SMART VISIT TRACKING (BOT RESISTANT) ---
-    // Only track if we haven't tracked them in this browser session yet
-    // --- STRICT VISIT TRACKING (BOT RESISTANT) ---
-    if (!sessionStorage.getItem('easyscanlate_visit_tracked')) {
-        
-        let hasTracked = false;
-        let interactionScore = 0;
-        const REQUIRED_SCORE = 20; // The minimum amount of interaction needed
-
-        const trackHumanVisit = () => {
-            if (hasTracked) return;
-            hasTracked = true;
-
-            sessionStorage.setItem('easyscanlate_visit_tracked', 'true');
-
-            fetch('https://e.easyscanlate.site/visit', {
-                method: 'POST'
-            }).catch(err => console.error("Tracking failed", err));
-        };
-
-        const addScore = (points) => {
-            if (hasTracked) return;
-            interactionScore += points;
-            
-            if (interactionScore >= REQUIRED_SCORE) {
-                trackHumanVisit();
-            }
-        };
-
-        // 1. Mouse movement: Worth 1 point per movement. 
-        // A human naturally sweeping the mouse across the screen will hit 20 points in half a second.
-        window.addEventListener('mousemove', () => addScore(1), { passive: true });
-
-        // 2. Scrolling: Worth 5 points per scroll tick. 
-        // A human scrolling down to see your features will quickly hit 20 points.
-        window.addEventListener('scroll', () => addScore(5), { passive: true });
-
-        // 3. Clicks & Taps: Worth 20 points (Instant Pass). 
-        // If they click anywhere or tap their phone screen, we instantly know they are human.
-        window.addEventListener('click', () => addScore(20), { passive: true });
-        window.addEventListener('touchstart', () => addScore(20), { passive: true });
-        window.addEventListener('keydown', () => addScore(20), { passive: true });
-
-        // 4. Time on page: Worth 2 points per second.
-        // If they sit and read the hero section without touching the mouse for 10 seconds (10s x 2pts = 20), they pass.
-        const timeInterval = setInterval(() => {
-            if (hasTracked) {
-                clearInterval(timeInterval);
-            } else {
-                addScore(2);
-            }
-        }, 1000);
-    }
-    // ---------------------------------------------
+    // Page check-ins are handled by ./js/e.js (first-party POST /event):
+    // raw load + engagement-gated view + download intent.
 
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
@@ -130,9 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal && downloadBtns.length > 0) {
         downloadBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Debugging: Check console to ensure click is registered
-                console.log('Download clicked. Windows detected:', isWindows);
-
                 if (!isWindows) {
                     e.preventDefault(); // Stop the link from jumping
                     e.stopPropagation(); // Stop other listeners (like smooth scroll) from interfering

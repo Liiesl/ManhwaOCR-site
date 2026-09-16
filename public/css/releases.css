@@ -1,0 +1,269 @@
+/* Releases — editorial index style, matches roadmap sharp system */
+
+.releases-page .releases-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.releases-header {
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+    max-width: 680px;
+}
+
+.releases-header h1 {
+    letter-spacing: -0.02em;
+}
+
+/* Timeline — flat indexed rows, no glass cards */
+
+.releases-timeline {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border);
+    margin-top: 1rem;
+}
+
+.release-entry {
+    padding: 2rem 0 2rem 1.5rem;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    border-left: 2px solid transparent;
+    background: transparent;
+    border-radius: 0;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.release-entry:hover {
+    border-left-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="light"] .release-entry:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.release-entry-latest {
+    border-left-color: var(--color-primary);
+}
+
+.release-body {
+    min-width: 0;
+}
+
+.release-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.release-title-row h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.release-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.release-meta time {
+    font-variant-numeric: tabular-nums;
+}
+
+.release-tag {
+    font-family: var(--font-main);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    color: var(--color-text-muted);
+}
+
+.release-counts {
+    font-size: 0.85rem;
+}
+
+.release-github-link {
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 1px;
+}
+
+.release-github-link:hover {
+    color: var(--color-primary);
+}
+
+.release-entry .tag {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0;
+}
+
+.release-summary {
+    margin: 0 0 1.25rem;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    max-width: 62ch;
+}
+
+.release-summary a {
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-primary);
+    text-decoration: none;
+}
+
+.release-notice {
+    margin: 0 0 1.25rem;
+    padding: 0.9rem 1rem 0.9rem 1rem;
+    border-left: 2px solid #ffc107;
+    background: rgba(255, 193, 7, 0.06);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+.release-notice strong {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.release-notice-list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.changelog {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-left: 2px solid var(--color-border);
+    padding-left: 1rem;
+}
+
+.changelog li {
+    margin: 0;
+    font-size: 0.96rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    display: block;
+}
+
+.changelog li .tag {
+    margin-right: 0.6rem;
+    vertical-align: baseline;
+}
+
+.changelog li a {
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-primary);
+    text-decoration: none;
+}
+
+.changelog li a:hover {
+    color: var(--color-primary);
+}
+
+/* States — reuse roadmap dashed-box language */
+
+.releases-timeline .empty-message,
+.releases-timeline .error-message {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    padding: 1.25rem 1rem;
+    text-align: left;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    margin-top: 1rem;
+}
+
+.releases-timeline .empty-message strong {
+    display: block;
+    font-family: var(--font-main);
+    color: var(--color-text);
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+}
+
+.releases-timeline .error-message {
+    color: #f44336;
+    font-weight: 500;
+}
+
+.releases-timeline .error-message a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Skeleton (shared shimmer language with roadmap) */
+
+.releases-timeline .skeleton-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.releases-timeline .skeleton-line {
+    height: 0.7rem;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-sweep 1.2s ease-in-out infinite;
+}
+
+[data-theme="light"] .releases-timeline .skeleton-line {
+    background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.06) 75%);
+    background-size: 200% 100%;
+}
+
+.releases-timeline .skeleton-line.w-40 { width: 40%; }
+.releases-timeline .skeleton-line.w-60 { width: 60%; }
+.releases-timeline .skeleton-line.w-70 { width: 70%; }
+.releases-timeline .skeleton-line.w-80 { width: 80%; }
+
+@media (max-width: 900px) {
+    .release-entry {
+        padding-left: 1rem;
+    }
+
+    .release-title-row h2 {
+        font-size: 1.35rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .releases-timeline .skeleton-line,
+    .release-entry {
+        animation: none;
+        transition: none;
+    }
+}

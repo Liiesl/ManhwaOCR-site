@@ -1,154 +1,577 @@
-/* Styles for the Kanban board on roadmap.html */
+/* Roadmap — editorial index style, matches homepage sharp system */
+
+.roadmap-page .roadmap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.roadmap-header {
+    text-align: left;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+    max-width: 680px;
+}
+
+.roadmap-header h1 {
+    letter-spacing: -0.02em;
+}
+
+.roadmap-header .badge {
+    margin-bottom: 1rem;
+}
+
+.roadmap-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.roadmap-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.roadmap-meta-sep {
+    width: 1px;
+    height: 1.25rem;
+    background: var(--color-border);
+}
+
+.roadmap-meta-link {
+    color: var(--color-text);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 1px;
+}
+
+.roadmap-meta-link:hover {
+    color: var(--color-primary);
+}
+
+/* Kanban */
 
 #kanban {
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 .kanban-board {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    align-items: start;
 }
 
 .kanban-column {
-    flex: 1;
-    /* background-color: rgba(255, 255, 255, 0.02); */
-    border-radius: var(--radius-md);
-    padding: 1rem;
-    min-width: 250px;
+    padding: 1.5rem 1.5rem 0.5rem;
+    min-width: 0;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
-.kanban-column h3 {
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-text);
+.kanban-column + .kanban-column {
+    border-left: 1px solid var(--color-border);
 }
+
+.kanban-column-head {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.kanban-index {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    opacity: 0.7;
+    padding-top: 0.35rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.kanban-head-text h3 {
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.3rem;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.kanban-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    background: var(--color-text-muted);
+    opacity: 0.7;
+}
+
+.status-todo {
+    background: var(--color-secondary);
+    opacity: 1;
+}
+
+.status-progress {
+    background: var(--color-primary);
+    opacity: 1;
+    animation: status-pulse 1.6s ease-in-out infinite;
+}
+
+.status-done {
+    background: #4caf50;
+    opacity: 1;
+}
+
+@keyframes status-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+.kanban-column-active {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+[data-theme="light"] .kanban-column-active {
+    background: rgba(0, 0, 0, 0.015);
+}
+
+.column-content {
+    display: flex;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    max-height: min(62vh, 600px);
+    min-height: 120px;
+}
+
+.column-scrollarea {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.column-scrollarea::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+/* Custom scrollbar — always painted (never auto-hides like native overlays) */
+.column-scrolltrack {
+    display: none;
+    position: relative;
+    width: 10px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: rgba(223, 208, 184, 0.08);
+}
+
+.column-content.has-scroll .column-scrolltrack {
+    display: block;
+}
+
+[data-theme="light"] .column-scrolltrack {
+    background: rgba(34, 40, 49, 0.08);
+}
+
+.column-scrollthumb {
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    top: 0;
+    min-height: 40px;
+    border-radius: 999px;
+    background: rgba(223, 208, 184, 0.45);
+    border: 1px solid rgba(223, 208, 184, 0.25);
+    cursor: pointer;
+    touch-action: none;
+}
+
+.column-scrollthumb:hover {
+    background: var(--color-primary);
+}
+
+[data-theme="light"] .column-scrollthumb {
+    background: rgba(34, 40, 49, 0.35);
+    border-color: rgba(34, 40, 49, 0.2);
+}
+
+/* Cards — flat bordered rows */
 
 .kanban-card {
-    background: var(--color-surface-glass);
+    background: transparent;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    padding: 1.25rem;
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-    backdrop-filter: blur(10px);
+    padding: 1rem 1.1rem;
+    box-shadow: none;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
 .kanban-card:hover {
-    box-shadow: var(--shadow-lg);
     border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
 }
 
-.kanban-card p {
+[data-theme="light"] .kanban-card:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.kanban-card-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.55rem;
+}
+
+.kanban-card-title {
     margin: 0;
-    font-size: 0.95rem;
+    font-family: var(--font-main);
+    font-size: 0.98rem;
+    font-weight: 600;
+    letter-spacing: -0.005em;
     color: var(--color-text);
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
-/* Reusing tag styles from pages.css, but ensuring they work here */
-.kanban-card .tag {
-    margin-bottom: 0.75rem;
-}
-
-/* Nested sub-task lists */
 .subtask-list {
-    list-style-type: disc;
-    /* Changed to disc for better visibility */
-    padding-left: 20px;
-    margin-top: 0.75rem;
-    margin-bottom: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0.7rem 0 0;
+    border-left: 2px solid var(--color-border);
+    padding-left: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
 .subtask-list li {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
     color: var(--color-text-muted);
-    margin-bottom: 0.25rem;
 }
+
+.subtask-list li > span {
+    display: inline;
+}
+
+.subtask-list li::before {
+    content: "— ";
+    opacity: 0.5;
+}
+
+/* Deeper nesting: progressively subtler rail */
+.subtask-list .subtask-list {
+    margin-top: 0.35rem;
+    border-left-color: var(--color-border);
+    border-left-width: 1px;
+    padding-left: 0.75rem;
+    opacity: 0.95;
+}
+
+.subtask-list .subtask-list li {
+    font-size: 0.84rem;
+}
+
+/* Reuse tag base from pages.css, tighten for roadmap */
+.kanban-card .tag {
+    margin-bottom: 0;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    letter-spacing: 0.08em;
+}
+
+.tag.fixed.goal {
+    background: rgba(223, 208, 184, 0.14);
+    color: var(--color-secondary);
+}
+
+/* States */
 
 .loading-message,
 .empty-message,
 .error-message {
-    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    padding: 1.25rem 1rem;
+    text-align: left;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+}
+
+.empty-message {
+    font-style: normal;
     color: var(--color-text-muted);
-    padding: 1rem;
-    text-align: center;
+}
+
+.empty-message strong {
+    display: block;
+    font-family: var(--font-main);
+    color: var(--color-text);
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
 }
 
 .error-message {
     color: #f44336;
-    font-weight: 600;
+    font-weight: 500;
 }
 
+.error-message a {
+    color: inherit;
+    text-decoration: underline;
+}
 
-/* Styles for the future release plans */
+/* Skeleton (CSS-only shimmer) */
+
+.skeleton-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.skeleton-line {
+    height: 0.7rem;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-sweep 1.2s ease-in-out infinite;
+}
+
+[data-theme="light"] .skeleton-line {
+    background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.06) 75%);
+    background-size: 200% 100%;
+}
+
+.skeleton-line.w-40 { width: 40%; }
+.skeleton-line.w-50 { width: 50%; }
+.skeleton-line.w-60 { width: 60%; }
+.skeleton-line.w-70 { width: 70%; }
+.skeleton-line.w-80 { width: 80%; }
+
+@keyframes skeleton-sweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Future releases — editorial rows */
+
 #future-releases {
     margin-top: 5rem;
+    max-width: 960px;
+}
+
+.releases-head {
+    margin-bottom: 2.5rem;
+    max-width: 640px;
+}
+
+.releases-kicker {
+    display: block;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.6rem;
+}
+
+.releases-head h2 {
+    margin-bottom: 0.75rem;
+}
+
+.releases-head p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.releases-head a {
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-primary);
+    text-decoration: none;
 }
 
 .release-phase {
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 2rem;
 }
 
-.release-phase>h3 {
-    font-size: 1.75rem;
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: 1rem;
-    margin-bottom: 0.75rem;
-    color: var(--color-text);
+.phase-head {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
 }
 
-.release-phase>p {
-    font-size: 1.1rem;
+.phase-head .audience-index {
+    font-family: var(--font-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     color: var(--color-text-muted);
-    margin-bottom: 2rem;
+    opacity: 0.7;
+    padding-top: 0.5rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.phase-head h3 {
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.4rem;
+    color: var(--color-text);
+    border: 0;
+    padding: 0;
+}
+
+.phase-head p {
+    margin: 0;
+    font-size: 1rem;
     line-height: 1.6;
+    max-width: 56ch;
 }
 
 .release-plan {
-    margin-bottom: 2rem;
-    background: var(--color-surface-glass);
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    border-left: 4px solid var(--color-primary);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
+    margin-bottom: 1rem;
+    margin-left: 4.5rem;
+    background: transparent;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+    border-radius: 0;
+    border: 0;
+    border-left: 2px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    transition: border-color 0.2s ease;
 }
 
 .release-plan:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: none;
+    border-left-color: var(--color-primary);
+}
+
+.release-plan-stable {
+    border-left-color: var(--color-primary);
+}
+
+.release-plan-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
 }
 
 .release-plan h4 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: -0.005em;
     color: var(--color-text);
 }
 
 .release-plan ul {
-    padding-left: 20px;
+    padding: 0;
     margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
 }
 
 .release-plan li {
-    margin-bottom: 0.5rem;
+    margin: 0;
     color: var(--color-text-muted);
+    font-size: 0.96rem;
+    line-height: 1.55;
+    padding-left: 1.1rem;
+    position: relative;
 }
 
-/* Responsive styles */
+.release-plan li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.68em;
+    width: 0.55rem;
+    height: 2px;
+    background: var(--color-primary);
+    opacity: 0.7;
+}
+
+/* Responsive */
+
 @media (max-width: 900px) {
     .kanban-board {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
 
     .kanban-column {
-        margin-bottom: 2rem;
+        padding: 1.25rem 0 0.5rem;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .kanban-column + .kanban-column {
+        border-left: 0;
+    }
+
+    .column-content {
+        max-height: 420px;
+    }
+
+    .release-plan {
+        margin-left: 0;
+    }
+
+    .phase-head {
+        grid-template-columns: 2rem 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .status-progress,
+    .skeleton-line,
+    .kanban-card {
+        animation: none;
+        transition: none;
     }
 }

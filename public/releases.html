@@ -48,41 +48,28 @@
 
     <!-- Navigation injected via nav-component.js -->
 
-    <main class="page-content">
-        <div class="container">
-            <div class="section-header">
+    <main class="page-content releases-page">
+        <div class="container releases-container">
+            <div class="section-header releases-header">
                 <h1>Release Notes</h1>
-                <p>Stay up to date with the latest changes and improvements.</p>
+                <div class="roadmap-meta" aria-label="Changelog legend">
+                    <span class="roadmap-meta-item"><span class="tag new">New</span> Addition</span>
+                    <span class="roadmap-meta-item"><span class="tag improved">Changed</span> Modification</span>
+                    <span class="roadmap-meta-item"><span class="tag fixed">Fixed</span> Fix</span>
+                    <span class="roadmap-meta-sep" aria-hidden="true"></span>
+                    <a class="roadmap-meta-link" href="./roadmap.html">See what's next &rarr;</a>
+                </div>
             </div>
 
-            <div id="releases-container" class="releases-list">
-                <article class="release-version">
-                    <h2>Version 0.2.0</h2>
-                    <time datetime="2025-11-03T09:45:12Z">November 03, 2025</time>
-                    <ul class="changelog">
-                        <li><span class="tag new">New</span> add proper updater and in app update</li>
-                        <li><span class="tag new">New</span> add context fill feature</li>
-                        <li><span class="tag new">New</span> add hide text</li>
-                        <li><span class="tag new">New</span> add ocr override dialog confirmation</li>
-                        <li><span class="tag new">New</span> add custom state aware button class</li>
-                        <li><span class="tag improved">Changed</span> make app sync to be on its own manager</li>
-                        <li><span class="tag improved">Changed</span> make menu button to be layout class</li>
-                        <li><span class="tag improved">Changed</span> make further ocr to override old ocr</li>
-                        <li><span class="tag improved">Changed</span> make manual ocr overlay to be presistent</li>
-                        <li><span class="tag improved">Changed</span> make batch ocr less fragile (threads destroyed
-                            when running)</li>
-                        <li><span class="tag improved">Changed</span> make translation format to be xml like</li>
-                        <li><span class="tag fixed">Fixed</span> fix stitched img not saved as stitched</li>
-                        <li><span class="tag fixed">Fixed</span> fix too much recent project</li>
-                        <li><span class="tag fixed">Fixed</span> fix unresponsive checkbox</li>
-                        <li><span class="tag fixed">Fixed</span> fix unreliable re translate</li>
-                    </ul>
-                </article>
-                <article class="release-version">
-                    <h2>Version 0.1.0</h2>
-                    <time datetime="2025-09-28T21:16:01Z">September 28, 2025</time>
-                </article>
-            </div>
+            <section id="release-notes" aria-live="polite">
+                <div id="releases-container" class="releases-timeline">
+                    <div class="skeleton-card" aria-hidden="true"><span class="skeleton-line w-40"></span><span class="skeleton-line"></span><span class="skeleton-line w-70"></span></div>
+                    <div class="skeleton-card" aria-hidden="true"><span class="skeleton-line w-60"></span><span class="skeleton-line w-80"></span></div>
+                </div>
+                <noscript>
+                    <p class="empty-message"><strong>JavaScript is required.</strong>View releases directly on <a href="https://github.com/Liiesl/EasyScanlate/releases" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+                </noscript>
+            </section>
         </div>
     </main>
 
@@ -99,6 +86,7 @@
     <script src="./nav-component.js"></script>
     <script src="./js/releases.js"></script>
     <script src="./script.js"></script>
+    <script src="./js/e.js"></script>
 </body>
 
 </html>
